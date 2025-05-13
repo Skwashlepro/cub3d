@@ -7,7 +7,7 @@ MLX_PATH = ./lib/mlx_linux/
 VPATH		= ./srcs/:./srcs/RT
 INC = -Iincludes/
 
-SRC_FILES	=
+SRC_FILES	= main \
 
 OBJ	= $(addsuffix .o, $(SRC_FILES))
 
@@ -24,13 +24,11 @@ $(milix):
 
 clean:
 	@make -s $@ -C $(LIBFT_PATH)
-	@make -s $@ -C $(PRINTF_PATH)
 	@make -s $@ -C $(MLX_PATH)
 	rm -f ${OBJ} 
 
 fclean: clean
 	@make -s $@ -C $(LIBFT_PATH)
-	@make -s $@ -C $(PRINTF_PATH)
 	@make -s $@ -C $(MLX_PATH)
 	rm -f ${NAME}
 
