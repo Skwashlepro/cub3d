@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/13 18:10:51 by luctan            #+#    #+#             */
-/*   Updated: 2025/05/15 22:06:34 by luctan           ###   ########.fr       */
+/*   Created: 2023/11/07 11:45:48 by luctan            #+#    #+#             */
+/*   Updated: 2023/11/07 15:24:51 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-int	main(int ac, char **av, char *env[])
+int	ft_isdigit(int c)
 {
-	t_data data;
-
-	if (!env || !*env)
-		return (1);
-	else if (ac != 2)
-		return (printf("INVALID ARGUMENT\n"), 0);
-	if (!init_map(&data, av[1])); 
-		return (1)
-	display_init(&data);
-	ft_kill(&data);
+	if (c < 48 || c > 57)
+		return (0);
+	return (1);
 }

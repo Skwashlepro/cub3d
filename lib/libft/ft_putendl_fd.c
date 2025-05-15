@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/13 18:10:51 by luctan            #+#    #+#             */
-/*   Updated: 2025/05/15 22:06:34 by luctan           ###   ########.fr       */
+/*   Created: 2023/11/09 14:32:49 by luctan            #+#    #+#             */
+/*   Updated: 2023/11/09 14:33:54 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-int	main(int ac, char **av, char *env[])
+void	ft_putendl_fd(char *s, int fd)
 {
-	t_data data;
+	int	i;
 
-	if (!env || !*env)
-		return (1);
-	else if (ac != 2)
-		return (printf("INVALID ARGUMENT\n"), 0);
-	if (!init_map(&data, av[1])); 
-		return (1)
-	display_init(&data);
-	ft_kill(&data);
+	i = -1;
+	while (s[++i])
+		write(fd, &s[i], 1);
+	write(fd, "\n", 1);
 }

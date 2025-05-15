@@ -8,7 +8,7 @@ BOLD = \033[1m
 
 NAME 		= cub3d
 CC			= cc
-LIB		= srcs/libft/libft.a
+LIB		= lib/libft/libft.a
 MLX		= mlx_linux/Makefile.gen
 CFLAGS		= -Wall -Werror -Wextra
 MLX_PATH = ./lib/mlx_linux/
@@ -16,6 +16,7 @@ VPATH		= ./srcs/:./srcs/RT
 INC = -Iincludes/
 
 SRC_FILES	= main \
+	parse \
 
 OBJ	= $(addsuffix .o, $(SRC_FILES))
 

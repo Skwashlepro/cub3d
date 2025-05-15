@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 19:48:20 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/05/13 19:58:05 by lmokhtar         ###   ########.fr       */
+/*   Updated: 2025/05/15 21:57:47 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	checkwalls(t_data *data)
 	return (1);
 }
 
-char	**getmap(t_data *data, int fd, char **map)
+char	**getmap(t_data *data, int fd, char **map, char *tmp)
 {
 	while (fd)
 	{
@@ -89,25 +89,27 @@ char	**getmap(t_data *data, int fd, char **map)
 				return (ft_printf("Error\nempty file\n"), NULL);
 			break ;
 		}
-		if (!data->buffer)
+		if (!data->buffer) // ca sert a quoi ?
 			data->buffer = ft_strdup2("");
-		data->tmp = data->buffer;
-		data->buffer = ft_strjoin2(data->tmp, data->line);
-		if (error_map(data->line) == 1)
-			data->erreur = 1;
-		free_db(data->tmp, data->line);
+		tmp = data->buffer;
+		data->buffer = ft_strjoin2(tmp, data->line);
+		if (error_map(data->line) == 1) // change enleve le "if" et change data->error dans error_map ca fait gagner des lignes et c'est +1000 aura
+			data->error = 1;
+		free_db(tmp, data->line);
 		data->map_width++;
 	}
-	if (data->erreur == 1)
-		return (free(data->buffer), NULL);
+	if (data->error == 1)
+		return (free_str(data->buffer), NULL);
 	map = ft_split(data->buffer, '\n');
 	if (!map)
-		return (free(data->buffer), NULL);
-	return (free(data->buffer), map);
+		return (free_str(data->buffer), NULL);
+	return (free_str(data->buffer), map);
 }
 
 int	init_map(t_data *data, char *str)
 {
+	char	*tmp;
+	
 	data->map = NULL;
 	data->fd = 0;
 	data->x = 0;
@@ -120,10 +122,9 @@ int	init_map(t_data *data, char *str)
 	data->fd = open(str, O_RDONLY);
 	if (data->fd == -1)
 		return (ft_printf("Error\nFile not found\n"), 2);
-	data->map = getmap(data, data->fd, data->map);
+	data->map = getmap(data, data->fd, data->map, tmp);
 	if (!data->map)
 		return (close(data->fd), 0);
-	check_winnable(data);
 	close(data->fd);
 	return (1);
 }

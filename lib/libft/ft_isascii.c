@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/13 18:10:51 by luctan            #+#    #+#             */
-/*   Updated: 2025/05/15 22:06:34 by luctan           ###   ########.fr       */
+/*   Created: 2023/11/07 11:54:41 by luctan            #+#    #+#             */
+/*   Updated: 2023/11/10 14:41:58 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-int	main(int ac, char **av, char *env[])
+int	ft_isascii(int c)
 {
-	t_data data;
-
-	if (!env || !*env)
+	if (c >= 0 && c <= 127)
 		return (1);
-	else if (ac != 2)
-		return (printf("INVALID ARGUMENT\n"), 0);
-	if (!init_map(&data, av[1])); 
-		return (1)
-	display_init(&data);
-	ft_kill(&data);
+	return (0);
 }

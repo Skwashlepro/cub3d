@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   display_handling.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/13 18:10:51 by luctan            #+#    #+#             */
-/*   Updated: 2025/05/15 22:06:34 by luctan           ###   ########.fr       */
+/*   Created: 2025/05/15 21:55:38 by luctan            #+#    #+#             */
+/*   Updated: 2025/05/15 22:05:36 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int ac, char **av, char *env[])
+void	display_init(t_data *data)
 {
-	t_data data;
+	t_disp disp;
 
-	if (!env || !*env)
-		return (1);
-	else if (ac != 2)
-		return (printf("INVALID ARGUMENT\n"), 0);
-	if (!init_map(&data, av[1])); 
-		return (1)
-	display_init(&data);
-	ft_kill(&data);
+	disp = data->display;
+	disp.mlx = mlx_init();
+	disp.mlx_win = mlx_new_window(disp.mlx, 1280, 720, "Cub3D");
+	mlx_hook(disp.mlx_win, 2, 1L << 0, &key_listener, data);
+	mlx_hook(disp.mlx_win, 17, 0, on_window_close, data);
 }

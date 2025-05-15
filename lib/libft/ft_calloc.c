@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/13 18:10:51 by luctan            #+#    #+#             */
-/*   Updated: 2025/05/15 22:06:34 by luctan           ###   ########.fr       */
+/*   Created: 2023/11/15 17:34:40 by luctan            #+#    #+#             */
+/*   Updated: 2023/11/16 14:23:23 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-int	main(int ac, char **av, char *env[])
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	t_data data;
+	void	*a;
 
-	if (!env || !*env)
-		return (1);
-	else if (ac != 2)
-		return (printf("INVALID ARGUMENT\n"), 0);
-	if (!init_map(&data, av[1])); 
-		return (1)
-	display_init(&data);
-	ft_kill(&data);
+	if (nmemb != 0 && ((nmemb * size) / nmemb) != size)
+		return (NULL);
+	a = malloc(size * nmemb);
+	if (!a)
+		return (NULL);
+	ft_bzero(a, nmemb * size);
+	return (a);
 }

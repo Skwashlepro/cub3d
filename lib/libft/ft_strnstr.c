@@ -1,27 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/13 18:10:51 by luctan            #+#    #+#             */
-/*   Updated: 2025/05/15 22:06:34 by luctan           ###   ########.fr       */
+/*   Created: 2023/11/07 14:42:11 by luctan            #+#    #+#             */
+/*   Updated: 2023/11/15 19:31:01 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-int	main(int ac, char **av, char *env[])
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	t_data data;
+	size_t	i;
+	size_t	j;
+	char	*biggie;
 
-	if (!env || !*env)
-		return (1);
-	else if (ac != 2)
-		return (printf("INVALID ARGUMENT\n"), 0);
-	if (!init_map(&data, av[1])); 
-		return (1)
-	display_init(&data);
-	ft_kill(&data);
+	i = 0;
+	biggie = (char *)big;
+	if (!little[0])
+		return (biggie);
+	while (big[i] && i < len)
+	{
+		j = 0;
+		while (little[j] == big[i + j] && i + j < len)
+		{
+			j++;
+			if (!little[j])
+				return (biggie + i);
+		}
+		i++;
+	}
+	return (NULL);
 }
