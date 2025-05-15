@@ -16,7 +16,8 @@ VPATH		= ./srcs/:./srcs/RT
 INC = -Iincludes/
 
 SRC_FILES	= main \
-	parse \
+	parse keys display_handling\
+	utils \
 
 OBJ	= $(addsuffix .o, $(SRC_FILES))
 

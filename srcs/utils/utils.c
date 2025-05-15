@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 21:44:35 by luctan            #+#    #+#             */
-/*   Updated: 2025/05/15 21:48:52 by luctan           ###   ########.fr       */
+/*   Updated: 2025/05/15 22:07:12 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,4 @@ void	free_str(char *str)
 	return ;
 }
 
-void	free_db()
+void	free_db();

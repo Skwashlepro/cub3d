@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 02:13:51 by luctan            #+#    #+#             */
-/*   Updated: 2025/05/15 22:06:08 by luctan           ###   ########.fr       */
+/*   Updated: 2025/05/15 22:07:23 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int		init_map(t_data *data, char *str);
 void	key_listener();
 int		on_window_close(t_data *data);
 void	key_listener(int keycode, t_data *data);
+void	display_init(t_data *data);
 
 #  endif
 # endif
