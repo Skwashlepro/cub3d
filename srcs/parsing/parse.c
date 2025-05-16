@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 19:48:20 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/05/15 21:57:47 by luctan           ###   ########.fr       */
+/*   Updated: 2025/05/16 19:13:14 by lmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,45 +14,59 @@
 
 static void	floodfill(t_data *data, int x, int y, char **map)
 {
-	if (x < 0 || y < 0 || x >= data->map_width || y >= data->map_height
-		|| map[x][y] == 'X')
+	if (y < 0 || x < 0 || y >= data->map_height || x >= data->map_width
+		|| map[y][x] == ' ')
 		return ;
-	if (map[x][y] == '1')
+	if (map[y][x] == '1' || map[y][x] == 'X')
 		return ;
-	if (map[x][y] == 'E')
-	{
-		map[x][y] = 'X';
-		return ;
-	}
-	map[x][y] = 'X';
-	floodfill(data, x + 1, y, map);
+	map[y][x] = 'X';
+	floodfill(data, x + 1, y, map); // a partir de mtn bismillah land
 	floodfill(data, x - 1, y, map);
 	floodfill(data, x, y + 1, map);
 	floodfill(data, x, y - 1, map);
 }
 
-int	check_extension(char *fichier)
+static int	error_map(char *buffer)
 {
-	char	*ext;
+	int	i;
 
-	ext = ft_strchr(fichier, '.');
-	if (ext != NULL && ft_strcmp(ext, ".cub") == 0)
+	if (buffer[0] == '\n')
 		return (1);
-	ft_printf("Error\nWrong ext\n");
+	i = 1;
+	while (buffer[i] != '\0')
+	{
+		if (buffer[i] != ' ' && buffer[i] != '\n' && buffer[i - 1] == ' ')
+			// inshallah juste
+			return (1);
+		i++;
+	}
 	return (0);
 }
 
 static int	check_closed(char *str)
 {
-	int	i;
+	int				i;
+	int				j;
+	char			**map_copy;
+	struct s_data	*data;
 
+	map_copy = copy_map(data->map);
+	if (!map_copy)
+		return (0);
+	floodfill(data, data->p1.player_x, data->p1.player_y, map_copy);
 	i = 0;
-	while (str[i])
+	while (map_copy[i])
 	{
-		if (str[i] != '1')
-			return (0);
+		j = 0;
+		while (map_copy[i][j])
+		{
+			if (map_copy[i][j] == '0')
+				return (free_map(map_copy), 0);
+			j++;
+		}
 		i++;
 	}
+	free_map(map_copy);
 	return (1);
 }
 
@@ -69,10 +83,10 @@ int	checkwalls(t_data *data)
 		if (j == 0 || j == data->map_width - 1)
 		{
 			if (!check_closed(data->map[j]))
-				return (ft_printf("Erreur\n"), 0);
+				return (printf("Erreur\n"), 0);
 		}
 		else if (data->map[j][0] != '1' || data->map[j][i - 1] != '1')
-			return (ft_printf("Erreur\n"), 0);
+			return (printf("Erreur\n"), 0);
 		j++;
 	}
 	return (1);
@@ -89,12 +103,11 @@ char	**getmap(t_data *data, int fd, char **map, char *tmp)
 				return (ft_printf("Error\nempty file\n"), NULL);
 			break ;
 		}
-		if (!data->buffer) // ca sert a quoi ?
-			data->buffer = ft_strdup2("");
-		tmp = data->buffer;
+		// if (!data->buffer) // ca sert a quoi ? / je sais meme plus mdrrr jle met en commentaire pour l'instant
+			// 	data->buffer = ft_strdup2("");
+			tmp = data->buffer;
 		data->buffer = ft_strjoin2(tmp, data->line);
-		if (error_map(data->line) == 1) // change enleve le "if" et change data->error dans error_map ca fait gagner des lignes et c'est +1000 aura
-			data->error = 1;
+		if (error_map(data->line) == 1) // change enleve le "if" et change data->error dans error_map ca fait gagner des lignes et c'est +1000 aura data->error = 1;
 		free_db(tmp, data->line);
 		data->map_width++;
 	}
@@ -104,27 +117,4 @@ char	**getmap(t_data *data, int fd, char **map, char *tmp)
 	if (!map)
 		return (free_str(data->buffer), NULL);
 	return (free_str(data->buffer), map);
-}
-
-int	init_map(t_data *data, char *str)
-{
-	char	*tmp;
-	
-	data->map = NULL;
-	data->fd = 0;
-	data->x = 0;
-	data->y = 0;
-	if (!check_extension(str))
-	{
-		ft_printf("Error\nWrong extension\n");
-		return (0);
-	}
-	data->fd = open(str, O_RDONLY);
-	if (data->fd == -1)
-		return (ft_printf("Error\nFile not found\n"), 2);
-	data->map = getmap(data, data->fd, data->map, tmp);
-	if (!data->map)
-		return (close(data->fd), 0);
-	close(data->fd);
-	return (1);
 }
