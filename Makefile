@@ -12,8 +12,9 @@ LIB		= lib/libft/libft.a
 MLX		= mlx_linux/Makefile.gen
 CFLAGS		= -Wall -Werror -Wextra
 MLX_PATH = ./lib/mlx_linux/
-VPATH		= ./srcs/:./srcs/RT
-INC = -Iincludes/
+LIBFT_PATH = ./lib/libft
+VPATH		= ./srcs/:./srcs/RT:./srcs/parsing:./srcs/input_handling:./srcs/display:./srcs/utils
+INC = -Iincludes
 
 SRC_FILES	= main \
 	parse parse2 keys display_handling\
@@ -21,15 +22,20 @@ SRC_FILES	= main \
 
 OBJ	= $(addsuffix .o, $(SRC_FILES))
 
-all: $(milix) $(NAME)
+all: $(milix) $(NAME) 
 
 %.o: %.c
-	$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O2 -c $< -o $@
+	$(CC) $(CFLAGS) $(INC) $(LIBFT) -I/usr/include -Imlx_linux -O2 -c $< -o $@
 
 $(NAME): $(OBJ)
 	@echo "$(SEPIA)$(BOLD)Assembling YoRHa unit [$(NAME)]...$(RESET)"
-	$(CC) $(OBJ) $(LIB) $(PTF) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imwlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+	$(CC) $(OBJ) $(LIBFT) $(PTF) $(INC) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 	@echo "$(WHITE)$(BOLD)▓ Unit $(NAME) ready for deployment. ▓$(RESET)"
+
+$(LIBFT):
+	@echo "$(SEPIA)$(BOLD)Initializing local libraries...$(RESET)"
+	@make -s -C $(LIB)
+	@echo "$(WHITE)Local libraries initialized.$(RESET)"
 
 $(milix):
 	@echo "$(SEPIA)$(BOLD)Initializing visual cortex...$(RESET)"

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 18:10:51 by luctan            #+#    #+#             */
-/*   Updated: 2025/05/16 19:13:44 by lmokhtar         ###   ########.fr       */
+/*   Updated: 2025/05/22 02:56:03 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,14 @@ int	main(int ac, char **av, char *env[])
 {
 	t_data data;
 
-	ft_memset(&data, 0, sizeof(t_data)); // memset pour gagner du temps et pas initaliser
 	if (!env || !*env)
 		return (1);
 	else if (ac != 2)
 		return (printf("INVALID ARGUMENT\n"), 0);
-	if (!init_map(&data, av[1])); 
+	ft_memset(&data, 0, sizeof(t_data)); // memset pour gagner du temps et pas initaliser
+	if (!init_map(&data, av[1]))
 		return (1);
 	display_init(&data);
-	ft_kill(&data);
+	ft_kill(&data, 0);
+	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 19:48:20 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/05/16 19:13:14 by lmokhtar         ###   ########.fr       */
+/*   Updated: 2025/05/22 03:04:59 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ char	**getmap(t_data *data, int fd, char **map, char *tmp)
 		}
 		// if (!data->buffer) // ca sert a quoi ? / je sais meme plus mdrrr jle met en commentaire pour l'instant
 			// 	data->buffer = ft_strdup2("");
-			tmp = data->buffer;
+		tmp = data->buffer;
 		data->buffer = ft_strjoin2(tmp, data->line);
 		if (error_map(data->line) == 1) // change enleve le "if" et change data->error dans error_map ca fait gagner des lignes et c'est +1000 aura data->error = 1;
 		free_db(tmp, data->line);
