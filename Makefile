@@ -52,7 +52,7 @@ clean:
 fclean: clean
 	@echo "$(SEPIA)Erasing all unit data...$(RESET)"
 	@make -s $@ -C $(LIBFT_PATH)
-	@make -s $@ -C $(MLX_PATH)
+	@make -s $< -C $(MLX_PATH)
 	rm -f ${NAME}
 	@echo "$(WHITE)Unit data wiped from system.$(RESET)"
 
