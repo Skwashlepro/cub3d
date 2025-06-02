@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 21:56:50 by luctan            #+#    #+#             */
-/*   Updated: 2025/05/15 22:06:13 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/03 01:19:29 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ void	key_listener(int keycode, t_data *data)
 	}
 	else if (keycode == W_KEY)
 		fwd();
-	else if (keycode == A_KEY)
+	else if (keycode == A_KEY)3
 		left();
 	else if (keycode == S_KEY)
 		right();
 	else if (keycode == D_KEY)
-		bkwd();
+		back();
 	return (0);
 }
 
