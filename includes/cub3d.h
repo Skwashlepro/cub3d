@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 02:13:51 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/03 01:32:38 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/03 01:34:06 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ int				check_player(t_data *data);
 char			**copy_map(char **map);
 char			**getmap(t_data *data, int fd, char **map, char *tmp);
 void			ft_kill(t_data *data, int code);
+void			cub_start(t_data *data);
 
 #  endif
 # endif
