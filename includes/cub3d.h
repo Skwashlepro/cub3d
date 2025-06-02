@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 02:13:51 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/03 01:27:36 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/03 01:32:38 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,14 @@
 #   include <stdio.h>
 #   include <stdlib.h>
 #   include <unistd.h>
+
+typedef enum e_card
+{
+	N = 0,
+	S = 1,
+	W = 2,
+	E = 3
+}	t_card;
 
 typedef struct s_gfx
 {
