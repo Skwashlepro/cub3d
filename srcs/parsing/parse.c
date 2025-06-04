@@ -6,7 +6,7 @@
 /*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 19:48:20 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/05/16 19:13:14 by lmokhtar         ###   ########.fr       */
+/*   Updated: 2025/06/04 18:52:52 by lmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ static int	error_map(char *buffer)
 	while (buffer[i] != '\0')
 	{
 		if (buffer[i] != ' ' && buffer[i] != '\n' && buffer[i - 1] == ' ')
-			// inshallah juste
 			return (1);
 		i++;
 	}
@@ -76,7 +75,7 @@ int	checkwalls(t_data *data)
 	int	j;
 
 	i = ft_strlen(data->map[0]);
-	data->map_height = i;
+	data->map_width = i;
 	j = 0;
 	while (data->map[j])
 	{
@@ -103,12 +102,12 @@ char	**getmap(t_data *data, int fd, char **map, char *tmp)
 				return (ft_printf("Error\nempty file\n"), NULL);
 			break ;
 		}
-		// if (!data->buffer) // ca sert a quoi ? / je sais meme plus mdrrr jle met en commentaire pour l'instant
-			// 	data->buffer = ft_strdup2("");
+		if (!data->buffer) // ca sert a quoi ? / je sais meme plus mdrrr jle met en commentaire pour l'instant
+				data->buffer = ft_strdup2("");
 			tmp = data->buffer;
 		data->buffer = ft_strjoin2(tmp, data->line);
 		if (error_map(data->line) == 1) // change enleve le "if" et change data->error dans error_map ca fait gagner des lignes et c'est +1000 aura data->error = 1;
-		free_db(tmp, data->line);
+			free_db(tmp, data->line);	
 		data->map_width++;
 	}
 	if (data->error == 1)

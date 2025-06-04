@@ -13,7 +13,7 @@ MLX		= mlx_linux/Makefile.gen
 CFLAGS		= -Wall -Werror -Wextra
 MLX_PATH = ./lib/mlx_linux/
 VPATH		= ./srcs/:./srcs/RT
-INC = -Iincludes/
+INC = -Iincludes/ 
 
 SRC_FILES	= main \
 	parse parse2 keys display_handling\

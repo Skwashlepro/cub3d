@@ -6,7 +6,7 @@
 /*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 02:13:51 by luctan            #+#    #+#             */
-/*   Updated: 2025/05/16 19:06:17 by lmokhtar         ###   ########.fr       */
+/*   Updated: 2025/06/04 19:07:18 by lmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ typedef struct s_data
 	int			x;
 	int			y;
 	bool		error;
+	char		*buffer;
+	char 		*line;
 
 }				t_data;
 
