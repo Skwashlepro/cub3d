@@ -6,7 +6,7 @@
 /*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 21:44:35 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/04 18:58:53 by lmokhtar         ###   ########.fr       */
+/*   Updated: 2025/06/04 19:22:20 by lmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,25 +40,6 @@ void	free_map(char **map)
 		i++;
 	}
 	free(map);
-}
-
-char	*ft_strchr(const char *s, int c)
-{
-	int		i;
-	char	*s2;
-
-	s2 = (char *)s;
-	i = ft_strlen(s);
-	if (c == '\0')
-		return (&s2[i]);
-	i = 0;
-	while (s2[i])
-	{
-		if (s2[i] == (char)c)
-			return (&s2[i]);
-		i++;
-	}
-	return (NULL);
 }
 
 int	check_extension(char *fichier)

@@ -6,7 +6,7 @@
 /*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 02:13:51 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/04 19:11:24 by lmokhtar         ###   ########.fr       */
+/*   Updated: 2025/06/04 19:27:56 by lmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
 #   define A_KEY 0x61
 #   define S_KEY 0x73
 #   define D_KEY 0x64
+#   include "../lib/gnl/get_next_line.h"
 #   include "../lib/libft/libft.h"
 #   include <../lib/mlx_linux/mlx.h>
-#   include "../lib/gnl/get_next_line.h"
 #   include <fcntl.h>
 #   include <math.h>
 #   include <stdbool.h>
@@ -38,7 +38,7 @@ typedef enum e_card
 	S = 1,
 	W = 2,
 	E = 3
-}	t_card;
+}				t_card;
 
 typedef struct s_gfx
 {
@@ -73,7 +73,7 @@ typedef struct s_data
 	int			y;
 	bool		error;
 	char		*buffer;
-	char 		*line;
+	char		*line;
 
 }				t_data;
 
@@ -86,12 +86,13 @@ void			free_map(char **map);
 void			free_db(char *str, char *str2);
 void			free_str(char *str);
 int				check_extension(char *fichier);
-int				check_closed(char *str);
 int				check_player(t_data *data);
 char			**copy_map(char **map);
 char			**getmap(t_data *data, int fd, char **map, char *tmp);
 void			ft_kill(t_data *data, int code);
 void			cub_start(t_data *data);
+int				check_closed(t_data *data);
+int				checkwalls(t_data *data);
 
 #  endif
 # endif

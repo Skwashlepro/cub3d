@@ -6,7 +6,7 @@
 /*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 19:48:20 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/06/04 19:12:02 by lmokhtar         ###   ########.fr       */
+/*   Updated: 2025/06/04 19:26:15 by lmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,11 @@ static int	error_map(char *buffer)
 	return (0);
 }
 
-static int	check_closed(char *str)
+int	check_closed(t_data *data)
 {
 	int				i;
 	int				j;
 	char			**map_copy;
-	struct s_data	*data;
 
 	map_copy = copy_map(data->map);
 	if (!map_copy)
@@ -81,7 +80,7 @@ int	checkwalls(t_data *data)
 	{
 		if (j == 0 || j == data->map_width - 1)
 		{
-			if (!check_closed(data->map[j]))
+			if (!check_closed(data))
 				return (printf("Erreur\n"), 0);
 		}
 		else if (data->map[j][0] != '1' || data->map[j][i - 1] != '1')
@@ -99,7 +98,7 @@ char	**getmap(t_data *data, int fd, char **map, char *tmp)
 		if (!data->line)
 		{
 			if (!data->buffer)
-				return (ft_printf("Error\nempty file\n"), NULL);
+				return (printf("Error\nempty file\n"), NULL);
 			break ;
 		}
 		if (!data->buffer) // ca sert a quoi ? / je sais meme plus mdrrr jle met en commentaire pour l'instant
