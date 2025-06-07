@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 02:13:51 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/03 01:34:06 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/07 02:35:45 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,14 @@
 #   include <stdio.h>
 #   include <stdlib.h>
 #   include <unistd.h>
+
+typedef	enum e_dir
+{
+	UP = 1,
+	DOWN = 2,
+	LEFT = 3,
+	RIGHT = 4,
+}	t_dir;
 
 typedef enum e_card
 {

@@ -1,37 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keys.c                                             :+:      :+:    :+:   */
+/*   movements.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/15 21:56:50 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/07 02:25:27 by luctan           ###   ########.fr       */
+/*   Created: 2025/06/07 02:21:46 by luctan            #+#    #+#             */
+/*   Updated: 2025/06/07 02:26:08 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	key_listener(int keycode, t_data *data)
+void	side(int dir)
 {
-	if (keycode == ESC_KEY)
+	if (dir == 'A')
 	{
-		ft_freedata(data);
-		exit(0);
 	}
-	else if (keycode == W_KEY)
-		fwd();
-	else if (keycode == A_KEY)
-		side((int)'A');
-	else if (keycode == D_KEY)
-		side((int)'D');
-	else if (keycode == S_KEY)
-		back();
-	return (0);
+	else if (dir == 'D')
+	{
+	}
 }
+void	fwd();
 
-int	on_window_close(t_data *data)
-{
-	ft_freedata(data);
-	exit(0);
-}
+void	back();
