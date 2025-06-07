@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 21:55:38 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/07 02:33:27 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/08 00:40:43 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,7 @@
 
 void	cub3d(t_data *data)
 {
-	Ay         = floor(player_y / TILE) * TILE;
-	if (RayFacingDown)
-	Ay += TILE;
-
-	// tan(α)  = Opposite / Adjacent;
-	// tan(α)  = (Ay - Py) / (Ax - Px);
-	// Ax - Px = (Ay - Py) / tan(α);
-	Ax         = Px + (Ay - Py) / tan(α);
-
+	
 }
 
 void	display_init(t_data *data)

@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 02:13:51 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/07 02:35:45 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/08 00:59:11 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 #   define S_KEY 0x73
 #   define D_KEY 0x64
 #   include "../lib/libft/libft.h"
-#   include <../lib/mlx_linux/mlx.h>
+#   include "mlx.h"
 #   include "../lib/gnl/get_next_line.h"
 #   include <fcntl.h>
 #   include <math.h>
@@ -51,14 +51,17 @@ typedef enum e_card
 typedef struct s_gfx
 {
 	void		*wall;
+	void		*viewmodel;
 }				t_gfx;
 
 typedef struct s_player
 {
-	void		*viewmodel;
-	int			player_x;
-	int			player_y;
-	int			player_dir;
+	double			pos_x;
+	double			pos_y;
+	double			dir_x;
+	double			dir_y;
+	double			plane_x;
+	double			plane_y;
 }				t_player;
 
 typedef struct s_disp

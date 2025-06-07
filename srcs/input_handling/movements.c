@@ -6,18 +6,18 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 02:21:46 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/07 02:26:08 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/08 00:40:27 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	side(int dir)
+void	side(int keycode)
 {
-	if (dir == 'A')
+	if (keycode == 'A')
 	{
 	}
-	else if (dir == 'D')
+	else if (keycode == 'D')
 	{
 	}
 }
