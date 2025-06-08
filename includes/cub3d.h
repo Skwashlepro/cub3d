@@ -6,15 +6,13 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 02:13:51 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/08 00:59:11 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/08 02:11:11 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
-# ifndef WIDTH
-#  ifndef HEIGHT
+# define CUB3D_H
 
-#   define CUB3D_H
 #   define WIDTH 1280
 #   define HEIGHT 720
 #   define ESC_KEY 0xff1b

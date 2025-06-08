@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 19:03:15 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/05/16 19:17:33 by lmokhtar         ###   ########.fr       */
+/*   Updated: 2025/06/08 02:10:15 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,40 @@ static int	is_valid_char(char c)
             c == 'E' || c == 'W' || c == ' ');
 }
 
+void set_init_direction(t_data *data, char dir)
+{
+	data->p1.dir_x = 0;
+	data->p1.dir_y = 0;
+	data->p1.plane_x = 0;
+	data->p1.plane_y = 0;
+
+	if (dir == 'N')
+	{
+		data->p1.dir_y = -1; // la direction =/ au pointage de la camera.
+		data->p1.plane_x = 0.66;// la camera pointe toujours a la droite du perso N = Droite du perso
+	}
+	else if (dir == 'S')
+	{
+		data->p1.dir_y = 1;
+		data->p1.plane_x = -0.66; 
+	}
+	else if (dir == 'W')
+	{
+		data->p1.dir_x = -1; 
+		data->p1.plane_y = -0.66;
+	}
+	else if (dir == 'E')
+	{
+		data->p1.dir_x = 1;
+		data->p1.plane_y = 0.66;
+	}
+}
+
 static int	check_player(t_data *data)
 {
     int	i;
     int	j;
-    int	player_count;
 
-    player_count = 0;
     i = -1;
     while (data->map[++i])
     {
@@ -53,16 +80,17 @@ static int	check_player(t_data *data)
             if (data->map[i][j] == 'N' || data->map[i][j] == 'S' ||
                 data->map[i][j] == 'E' || data->map[i][j] == 'W')
             {
-                player_count++;
-                data->p1.player_x = j;
-                data->p1.player_y = i;
-                data->p1.player_dir = data->map[i][j];
+                data->p1.pos_x = j + 0.5;
+                data->p1.pos_y = i + 0.5;
+				set_init_direction(data, data->map[i][j]);
+                data->map[i][j] = '0';
+				return (1);
             }
             else if (!is_valid_char(data->map[i][j]))
                 return (0);
         }
     }
-    return (player_count == 1);
+    return (0);
 }
 
 static char	**copy_map(char **map)

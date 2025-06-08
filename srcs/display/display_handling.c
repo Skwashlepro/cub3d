@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 21:55:38 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/08 00:40:43 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/08 02:17:32 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 void	cub3d(t_data *data)
 {
 	
+}
+
+void	render_frame(t_data *data)
+{
+	t_img	frame;
 }
 
 void	display_init(t_data *data)
@@ -26,6 +31,7 @@ void	display_init(t_data *data)
 	disp->mlx_win = mlx_new_window(disp->mlx, WIDTH, HEIGHT, "Cub3D");
 	cub3d(&data);
 	// mlx_hook(disp->mlx_win, 2, 1L << 0, &key_listener, data);
+	mlx_loop_hook(disp->mlx, render_frame, data);
 	mlx_hook(disp->mlx_win, 17, 0, on_window_close, data);
 	mlx_loop(disp->mlx);
 	if (disp->mlx == 0)
