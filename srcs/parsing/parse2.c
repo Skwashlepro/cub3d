@@ -6,7 +6,7 @@
 /*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 19:03:15 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/06/04 19:28:18 by lmokhtar         ###   ########.fr       */
+/*   Updated: 2025/06/09 17:44:18 by lmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,36 +34,64 @@ int	init_map(t_data *data, char *str)
 
 static int	is_valid_char(char c)
 {
-	return (c == '0' || c == '1' || c == 'N' || c == 'S' || c == 'E' || c == 'W'
-		|| c == ' ');
+    return (c == '0' || c == '1' || c == 'N' || c == 'S' || 
+            c == 'E' || c == 'W' || c == ' ');
 }
 
-int	check_player(t_data *data)
+void set_init_direction(t_data *data, char dir)
 {
-	int	i;
-	int	j;
-	int	player_count;
+	data->p1.dir_x = 0;
+	data->p1.dir_y = 0;
+	data->p1.plane_x = 0;
+	data->p1.plane_y = 0;
 
-	player_count = 0;
-	i = -1;
-	while (data->map[++i])
+	if (dir == 'N')
 	{
-		j = -1;
-		while (data->map[i][++j])
-		{
-			if (data->map[i][j] == 'N' || data->map[i][j] == 'S'
-				|| data->map[i][j] == 'E' || data->map[i][j] == 'W')
-			{
-				player_count++;
-				data->p1.player_x = j;
-				data->p1.player_y = i;
-				data->p1.player_dir = data->map[i][j];
-			}
-			else if (!is_valid_char(data->map[i][j]))
-				return (0);
-		}
+		data->p1.dir_y = -1; // la direction =/ au pointage de la camera.
+		data->p1.plane_x = 0.66;// la camera pointe toujours a la droite du perso N = Droite du perso
 	}
-	return (player_count == 1);
+	else if (dir == 'S')
+	{
+		data->p1.dir_y = 1;
+		data->p1.plane_x = -0.66; 
+	}
+	else if (dir == 'W')
+	{
+		data->p1.dir_x = -1; 
+		data->p1.plane_y = -0.66;
+	}
+	else if (dir == 'E')
+	{
+		data->p1.dir_x = 1;
+		data->p1.plane_y = 0.66;
+	}
+}
+
+static int	check_player(t_data *data)
+{
+    int	i;
+    int	j;
+
+    i = -1;
+    while (data->map[++i])
+    {
+        j = -1;
+        while (data->map[i][++j])
+        {
+            if (data->map[i][j] == 'N' || data->map[i][j] == 'S' ||
+                data->map[i][j] == 'E' || data->map[i][j] == 'W')
+            {
+                data->p1.pos_x = j + 0.5;
+                data->p1.pos_y = i + 0.5;
+				set_init_direction(data, data->map[i][j]);
+                data->map[i][j] = '0';
+				return (1);
+            }
+            else if (!is_valid_char(data->map[i][j]))
+                return (0);
+        }
+    }
+    return (0);
 }
 
 char	**copy_map(char **map)

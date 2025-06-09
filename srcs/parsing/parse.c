@@ -6,7 +6,7 @@
 /*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 19:48:20 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/06/04 19:26:15 by lmokhtar         ###   ########.fr       */
+/*   Updated: 2025/06/09 17:44:00 by lmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	check_closed(t_data *data)
 	map_copy = copy_map(data->map);
 	if (!map_copy)
 		return (0);
-	floodfill(data, data->p1.player_x, data->p1.player_y, map_copy);
+	floodfill(data, data->p1.pos_x, data->p1.pos_y, map_copy);
 	i = 0;
 	while (map_copy[i])
 	{

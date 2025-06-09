@@ -6,15 +6,13 @@
 /*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 02:13:51 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/04 19:27:56 by lmokhtar         ###   ########.fr       */
+/*   Updated: 2025/06/09 17:43:30 by lmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
-# ifndef WIDTH
-#  ifndef HEIGHT
+# define CUB3D_H
 
-#   define CUB3D_H
 #   define WIDTH 1280
 #   define HEIGHT 720
 #   define ESC_KEY 0xff1b
@@ -24,13 +22,22 @@
 #   define D_KEY 0x64
 #   include "../lib/gnl/get_next_line.h"
 #   include "../lib/libft/libft.h"
-#   include <../lib/mlx_linux/mlx.h>
+#   include "mlx.h"
+#   include "../lib/gnl/get_next_line.h"
 #   include <fcntl.h>
 #   include <math.h>
 #   include <stdbool.h>
 #   include <stdio.h>
 #   include <stdlib.h>
 #   include <unistd.h>
+
+typedef	enum e_dir
+{
+	UP = 1,
+	DOWN = 2,
+	LEFT = 3,
+	RIGHT = 4,
+}	t_dir;
 
 typedef enum e_card
 {
@@ -42,15 +49,18 @@ typedef enum e_card
 
 typedef struct s_gfx
 {
-	void		*wall;
+	void		*wall[4];
+	void		*viewmodel;
 }				t_gfx;
 
 typedef struct s_player
 {
-	void		*viewmodel;
-	int			player_x;
-	int			player_y;
-	int			player_dir;
+	double			pos_x;
+	double			pos_y;
+	double			dir_x;
+	double			dir_y;
+	double			plane_x;
+	double			plane_y;
 }				t_player;
 
 typedef struct s_disp

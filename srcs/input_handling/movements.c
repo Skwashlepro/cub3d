@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exits.c                                            :+:      :+:    :+:   */
+/*   movements.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/22 02:52:45 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/09 03:58:04 by luctan           ###   ########.fr       */
+/*   Created: 2025/06/07 02:21:46 by luctan            #+#    #+#             */
+/*   Updated: 2025/06/08 00:40:27 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	ft_kill(t_data *data, int code)
+void	side(int keycode)
 {
-	free(data);//free etc ici
-	exit(code);
+	if (keycode == 'A')
+	{
+	}
+	else if (keycode == 'D')
+	{
+	}
 }
+void	fwd();
+
+void	back();

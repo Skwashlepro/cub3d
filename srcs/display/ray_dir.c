@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exits.c                                            :+:      :+:    :+:   */
+/*   ray_dir.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/22 02:52:45 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/09 03:58:04 by luctan           ###   ########.fr       */
+/*   Created: 2025/06/07 02:33:34 by luctan            #+#    #+#             */
+/*   Updated: 2025/06/07 02:37:31 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	ft_kill(t_data *data, int code)
+bool	ray_direction(t_dir	dir)
 {
-	free(data);//free etc ici
-	exit(code);
+	dir = 0;
+	return (dir);
 }
