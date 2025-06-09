@@ -6,7 +6,7 @@
 /*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 19:03:15 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/06/09 20:20:08 by lmokhtar         ###   ########.fr       */
+/*   Updated: 2025/06/09 20:27:37 by lmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,25 @@ static int	check_texture(char **split, char **wall_texture, int *count)
 	return (0);
 }
 
+static int	process_cardinal(char **split, t_gfx *gfx, int *found_count)
+{
+	if (!split[0] || !split[1])
+		return (0);
+	if (!ft_strncmp(split[0], "NO", 3) && 
+		check_texture(split, &gfx->wall[0], found_count))
+		return (1);
+	if (!ft_strncmp(split[0], "SO", 3) && 
+		check_texture(split, &gfx->wall[1], found_count))
+		return (1);
+	if (!ft_strncmp(split[0], "WE", 3) && 
+		check_texture(split, &gfx->wall[2], found_count))
+		return (1);
+	if (!ft_strncmp(split[0], "EA", 3) && 
+		check_texture(split, &gfx->wall[3], found_count))
+		return (1);
+	return (0);
+}
+
 int	checkcardinal(t_gfx *gfx, int fd)
 {
 	char	*line;
@@ -149,16 +168,9 @@ int	checkcardinal(t_gfx *gfx, int fd)
 	{
 		split = ft_split(line, ' ');
 		free(line);
-		if (!split || !split[0])
+		if (!split)
 			continue ;
-		if (split[1] && ((!ft_strncmp(split[0], "NO", 3) && check_texture(split,
-						&gfx->wall[0], &found_count)) || (!ft_strncmp(split[0],
-						"SO", 3) && check_texture(split, &gfx->wall[1],
-						&found_count)) || (!ft_strncmp(split[0], "WE", 3)
-					&& check_texture(split, &gfx->wall[2], &found_count))
-				|| (!ft_strncmp(split[0], "EA", 3) && check_texture(split,
-						&gfx->wall[3], &found_count))))
-			;
+		process_cardinal(split, gfx, &found_count);
 		free_array(split);
 	}
 	return (found_count == 4);
