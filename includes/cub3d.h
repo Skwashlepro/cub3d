@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 02:13:51 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/09 17:43:30 by lmokhtar         ###   ########.fr       */
+/*   Updated: 2025/06/09 17:59:51 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-#   define WIDTH 1280
-#   define HEIGHT 720
+#   define WIDTH 800
+#   define HEIGHT 600
 #   define ESC_KEY 0xff1b
 #   define W_KEY 0x77
 #   define A_KEY 0x61
@@ -104,6 +104,4 @@ void			cub_start(t_data *data);
 int				check_closed(t_data *data);
 int				checkwalls(t_data *data);
 
-#  endif
-# endif
 #endif
