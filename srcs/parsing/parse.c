@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 19:48:20 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/05/22 03:04:59 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/09 03:45:29 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static int	check_closed(char *str)
 	map_copy = copy_map(data->map);
 	if (!map_copy)
 		return (0);
-	floodfill(data, data->p1.player_x, data->p1.player_y, map_copy);
+	floodfill(data, data->p1.pos_x, data->p1.pos_y, map_copy);
 	i = 0;
 	while (map_copy[i])
 	{

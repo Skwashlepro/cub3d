@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 21:55:38 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/08 02:17:32 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/09 03:44:26 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	cub3d(t_data *data)
 void	render_frame(t_data *data)
 {
 	t_img	frame;
+
+	
 }
 
 void	display_init(t_data *data)

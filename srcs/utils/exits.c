@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 02:52:45 by luctan            #+#    #+#             */
-/*   Updated: 2025/05/22 02:54:34 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/09 03:58:04 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	ft_kill(t_data *data, int code)
 {
-	(void)data;//free etc ici
+	free(data);//free etc ici
 	exit(code);
 }

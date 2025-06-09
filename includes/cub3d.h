@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 02:13:51 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/08 02:11:11 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/09 04:03:25 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ typedef enum e_card
 
 typedef struct s_gfx
 {
-	void		*wall;
+	void		*wall[4];
 	void		*viewmodel;
 }				t_gfx;
 
