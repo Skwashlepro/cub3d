@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 02:13:51 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/09 17:59:51 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/09 20:00:58 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,6 @@
 #   include <stdlib.h>
 #   include <unistd.h>
 
-typedef	enum e_dir
-{
-	UP = 1,
-	DOWN = 2,
-	LEFT = 3,
-	RIGHT = 4,
-}	t_dir;
-
 typedef enum e_card
 {
 	N = 0,
@@ -47,10 +39,22 @@ typedef enum e_card
 	E = 3
 }				t_card;
 
+typedef struct s_img
+{
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		line_length;
+	int		endian;
+}				t_img;
+
 typedef struct s_gfx
 {
+	char		*wall_path[4];
 	void		*wall[4];
 	void		*viewmodel;
+	int			ceiling_color;
+	int			floor_color;
 }				t_gfx;
 
 typedef struct s_player
@@ -103,5 +107,6 @@ void			ft_kill(t_data *data, int code);
 void			cub_start(t_data *data);
 int				check_closed(t_data *data);
 int				checkwalls(t_data *data);
+void	text_init(t_data *data);
 
 #endif

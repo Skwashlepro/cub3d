@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 02:21:46 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/08 00:40:27 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/09 19:48:20 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	side(int keycode)
 {
-	if (keycode == 'A')
+	if (keycode == A_KEY)
 	{
 	}
-	else if (keycode == 'D')
+	else if (keycode == D_KEY)
 	{
 	}
 }
