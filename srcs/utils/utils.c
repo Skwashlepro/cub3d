@@ -6,7 +6,7 @@
 /*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 21:44:35 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/04 19:22:20 by lmokhtar         ###   ########.fr       */
+/*   Updated: 2025/06/09 20:06:00 by lmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,19 @@ int	check_extension(char *fichier)
 		return (1);
 	ft_printf("Error\nWrong ext\n");
 	return (0);
+}
+
+void free_array(char **array)
+{
+	int	i;
+
+	if (!array)
+		return ;
+	i = 0;
+	while (array[i])
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array);
 }
