@@ -13,7 +13,7 @@ CFLAGS		= -Wall -Werror -Wextra
 MLX_PATH = ./lib/mlx_linux/
 LIBFT_PATH = ./lib/libft
 VPATH		= ./srcs/:./srcs/RT:./srcs/parsing:./srcs/input_handling:./srcs/display:./srcs/utils
-INC = -Iincludes
+INC = -Iincludes -Ilib/libft -I$(MLX_PATH) -I/usr/include
 
 SRC_FILES	= main \
     parse parse2 keys display_handling\
