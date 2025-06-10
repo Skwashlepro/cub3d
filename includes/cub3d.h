@@ -6,7 +6,7 @@
 /*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 02:13:51 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/10 19:00:14 by lmokhtar         ###   ########.fr       */
+/*   Updated: 2025/06/10 19:01:32 by lmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,23 @@ typedef enum e_dir
 	LEFT = 3,
 	RIGHT = 4,
 }				t_dir;
+#   define WIDTH 800
+#   define HEIGHT 600
+#   define ESC_KEY 0xff1b
+#   define W_KEY 0x77
+#   define A_KEY 0x61
+#   define S_KEY 0x73
+#   define D_KEY 0x64
+#   include "../lib/gnl/get_next_line.h"
+#   include "../lib/libft/libft.h"
+#   include "mlx.h"
+#   include "../lib/gnl/get_next_line.h"
+#   include <fcntl.h>
+#   include <math.h>
+#   include <stdbool.h>
+#   include <stdio.h>
+#   include <stdlib.h>
+#   include <unistd.h>
 
 typedef enum e_card
 {
@@ -46,10 +63,22 @@ typedef enum e_card
 	E = 3
 }				t_card;
 
+typedef struct s_img
+{
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		line_length;
+	int		endian;
+}				t_img;
+
 typedef struct s_gfx
 {
+	char		*wall_path[4];
 	void		*wall[4];
 	void		*viewmodel;
+	int			ceiling_color;
+	int			floor_color;
 }				t_gfx;
 
 typedef struct s_player
@@ -103,5 +132,6 @@ void			cub_start(t_data *data);
 int				check_closed(t_data *data);
 int				checkwalls(t_data *data);
 int				checkcardinal(t_gfx *gfx, int fd);
+void			text_init(t_data *data);
 
 #endif
