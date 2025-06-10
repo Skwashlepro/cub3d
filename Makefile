@@ -16,7 +16,7 @@ VPATH		= ./srcs/:./srcs/RT:./srcs/parsing:./srcs/input_handling:./srcs/display:.
 INC = -Iincludes -Ilib/libft -I$(MLX_PATH) -I/usr/include
 
 SRC_FILES	= main \
-    parse parse2 keys display_handling\
+    parse parse2  display_handling\
     utils  exits\
 
 OBJ_DIR = obj
