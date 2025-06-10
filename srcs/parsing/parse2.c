@@ -6,7 +6,7 @@
 /*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 19:03:15 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/06/10 18:55:57 by lmokhtar         ###   ########.fr       */
+/*   Updated: 2025/06/10 19:39:21 by lmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	set_init_direction(t_data *data, char dir)
 	}
 }
 
-static int	check_player(t_data *data)
+int	check_player(t_data *data)
 {
 	int	i;
 	int	j;
@@ -138,21 +138,53 @@ static int	check_texture(char **split, char **wall_texture, int *count)
 	return (0);
 }
 
+static int	check_color(char **split, unsigned int *color, int *count)
+{
+	int	r;
+	int	g;
+	int	b;
+
+	split[1] = ft_strtrim(split[1], ",");
+	if (!split[1])
+		return (0);
+	split[2] = ft_strtrim(split[2], ",");
+	split[3] = ft_strtrim(split[3], ",");
+	if (split[1] && split[2] && split[3])
+	{
+		r = ft_atoi(split[1]);
+		g = ft_atoi(split[2]);
+		b = ft_atoi(split[3]);
+		if (r >= 0 && r <= 255 && g >= 0 && g <= 255 && b >= 0 && b <= 255)
+		{
+			*color = (r << 16) | (g << 8) | b;
+			(*count)++;
+			return (1);
+		}
+	}
+	return (0);
+}
+
 static int	process_cardinal(char **split, t_gfx *gfx, int *found_count)
 {
 	if (!split[0] || !split[1])
 		return (0);
-	if (!ft_strncmp(split[0], "NO", 3) && 
-		check_texture(split, &gfx->wall[0], found_count))
+	if (!ft_strncmp(split[0], "NO", 3) && check_texture(split,
+			&gfx->wall_path[0], found_count))
 		return (1);
-	if (!ft_strncmp(split[0], "SO", 3) && 
-		check_texture(split, &gfx->wall[1], found_count))
+	if (!ft_strncmp(split[0], "SO", 3) && check_texture(split,
+			&gfx->wall_path[1], found_count))
 		return (1);
-	if (!ft_strncmp(split[0], "WE", 3) && 
-		check_texture(split, &gfx->wall[2], found_count))
+	if (!ft_strncmp(split[0], "WE", 3) && check_texture(split,
+			&gfx->wall_path[2], found_count))
 		return (1);
-	if (!ft_strncmp(split[0], "EA", 3) && 
-		check_texture(split, &gfx->wall[3], found_count))
+	if (!ft_strncmp(split[0], "EA", 3) && check_texture(split,
+			&gfx->wall_path[3], found_count))
+		return (1);
+	if (!ft_strncmp(split[0], "C", 2) && check_color(split, &gfx->ceiling_color,
+			found_count))
+		return (1);
+	if (!ft_strncmp(split[0], "F", 2) && check_color(split, &gfx->floor_color,
+			found_count))
 		return (1);
 	return (0);
 }
@@ -164,16 +196,16 @@ int	checkcardinal(t_gfx *gfx, int fd)
 	int		found_count;
 
 	found_count = 0;
-	while (found_count < 4 && (line = get_next_line(fd)))
+	while (found_count < 6 && (line = get_next_line(fd)))
 	{
 		split = ft_split(line, ' ');
-		free(line);
+		free_str(line);
 		if (!split)
 			continue ;
 		process_cardinal(split, gfx, &found_count);
 		free_array(split);
 	}
-	return (found_count == 4);
+	return (found_count == 6);
 }
 
 int	valid_map(t_data *data, t_gfx *gfx)

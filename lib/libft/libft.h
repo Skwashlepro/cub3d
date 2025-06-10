@@ -6,7 +6,7 @@
 /*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 15:17:57 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/04 18:56:54 by lmokhtar         ###   ########.fr       */
+/*   Updated: 2025/06/10 19:11:36 by lmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,6 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *));
 char	*ft_strdup2(const char *str);
 char	*ft_strjoin2(const char *s1, const char *s2);
 int		ft_strlen2(const char *str);
+int		ft_strcmp(const char *s1, const char *s2);
 
 #endif
