@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 21:55:38 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/09 20:01:08 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/10 17:11:36 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	cub3d(t_data *data)
 {
-	
+	text_init(data);
 }
 
 int	render_frame(t_data *data)
@@ -22,10 +22,10 @@ int	render_frame(t_data *data)
 	t_img	frame;
 	t_data	*gfx;
 
-	gfx = data->gfx;
+	gfx = &data->gfx;
 	frame.img = mlx_new_image(data->display.mlx, WIDTH, HEIGHT);
 	frame.addr = mlx_get_data_addr(frame.img, &frame.bpp, &frame.line_length, &frame.endian);
-	
+
 }
 
 void	display_init(t_data *data)

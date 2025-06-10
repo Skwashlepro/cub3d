@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 02:13:51 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/09 20:00:58 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/10 17:10:46 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,6 @@ void			ft_kill(t_data *data, int code);
 void			cub_start(t_data *data);
 int				check_closed(t_data *data);
 int				checkwalls(t_data *data);
-void	text_init(t_data *data);
+void			text_init(t_data *data);
 
 #endif
