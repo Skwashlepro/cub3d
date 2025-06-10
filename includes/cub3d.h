@@ -6,30 +6,29 @@
 /*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 02:13:51 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/09 20:19:57 by lmokhtar         ###   ########.fr       */
+/*   Updated: 2025/06/10 19:00:14 by lmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-#   define WIDTH 800
-#   define HEIGHT 600
-#   define ESC_KEY 0xff1b
-#   define W_KEY 0x77
-#   define A_KEY 0x61
-#   define S_KEY 0x73
-#   define D_KEY 0x64
-#   include "../lib/gnl/get_next_line.h"
-#   include "../lib/libft/libft.h"
-#   include "mlx.h"
-#   include "../lib/gnl/get_next_line.h"
-#   include <fcntl.h>
-#   include <math.h>
-#   include <stdbool.h>
-#   include <stdio.h>
-#   include <stdlib.h>
-#   include <unistd.h>
+# define WIDTH 800
+# define HEIGHT 600
+# define ESC_KEY 0xff1b
+# define W_KEY 0x77
+# define A_KEY 0x61
+# define S_KEY 0x73
+# define D_KEY 0x64
+# include "../lib/gnl/get_next_line.h"
+# include "../lib/libft/libft.h"
+# include "mlx.h"
+# include <fcntl.h>
+# include <math.h>
+# include <stdbool.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
 
 typedef enum e_dir
 {
@@ -103,6 +102,6 @@ void			ft_kill(t_data *data, int code);
 void			cub_start(t_data *data);
 int				check_closed(t_data *data);
 int				checkwalls(t_data *data);
-void			checkcardinal(t_gfx *gfx);
+int				checkcardinal(t_gfx *gfx, int fd);
 
 #endif
