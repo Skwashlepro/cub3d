@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 16:45:38 by luctan            #+#    #+#             */
-/*   Updated: 2025/05/22 03:02:42 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/10 20:57:31 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 #  define BUFFER_SIZE 10
 # endif
 
+# include "libft.h"
 # include <fcntl.h>
 # include <limits.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
-# include "../libft/libft.h"
 
 typedef struct s_list
 {

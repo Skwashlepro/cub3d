@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 02:52:45 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/09 03:58:04 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/10 21:00:36 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 
 void	ft_kill(t_data *data, int code)
 {
-	free(data);//free etc ici
+	(void)data; // Avoid unused parameter warning
 	exit(code);
+}
+
+int	on_window_close(t_data *data)
+{
+	ft_kill(data, 0);
+	exit(0);
 }

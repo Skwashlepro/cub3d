@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keys.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 21:56:50 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/09 17:43:42 by lmokhtar         ###   ########.fr       */
+/*   Updated: 2025/06/10 20:54:30 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,3 @@ void	key_listener(int keycode, t_data *data)
 		back();
 }
 
-int	on_window_close(t_data *data)
-{
-	ft_freedata(data);
-	exit(0);
-}

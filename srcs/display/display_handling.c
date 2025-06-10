@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 21:55:38 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/10 19:44:01 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/10 19:49:22 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,16 @@ int	render_frame(t_data *data)
 	frame.img = mlx_new_image(data->display.mlx, WIDTH, HEIGHT);
 	frame.addr = mlx_get_data_addr(frame.img, &frame.bpp, &frame.line_length, &frame.endian);
 	if (!frame.img || !frame.addr)
-		return (ft_printf("Error: Failed to create image\n"), 0);
+		return (printf("Error: Failed to create image\n"), 0);
 	while (++y < HEIGHT)
 	{
 		x = -1;
 		while (++x < WIDTH)
 		{
 			if (y < HEIGHT / 2)
-				my_mlx_pixel_put(&frame, x, y, data->gfx.ceiling_color);
+				mlx_pixel_put(data->display.mlx, data->display.mlx_win, x, y, data->gfx.ceiling_color);
 			else
-				my_mlx_pixel_put(&frame, x, y, data->gfx.floor_color);
+				mlx_pixel_put(data->display.mlx, data->display.mlx_win, x, y, data->gfx.floor_color);
 		}
 	}
 	mlx_put_image_to_window(data->display.mlx, data->display.mlx_win, frame.img, 0, 0);
@@ -53,7 +53,7 @@ void	display_init(t_data *data)
 	disp->mlx = mlx_init();
 	disp->mlx_win = mlx_new_window(disp->mlx, WIDTH, HEIGHT, "Cub3D");
 	if (!data || !data->display.mlx || !data->display.mlx_win)
-		return (0);
+		return ;
 	cub3d(data);
 	// mlx_hook(disp->mlx_win, 2, 1L << 0, &key_listener, data);
 	mlx_loop_hook(disp->mlx, render_frame, data);

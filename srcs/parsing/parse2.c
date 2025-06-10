@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 19:03:15 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/06/10 19:39:21 by lmokhtar         ###   ########.fr       */
+/*   Updated: 2025/06/10 21:33:16 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,15 @@ int	init_map(t_data *data, char *str)
 	data->fd = open(str, O_RDONLY);
 	if (data->fd == -1)
 		return (printf("Error\nFile not found\n"), 2);
-	if (!valid_map(data, &data->gfx))
+	if (checkcardinal(&data->gfx, data->fd) != 6)
+		return (printf("Error\n Invalid textures path \n"), 0);
+	data->map = getmap(data, data->fd, data->map, tmp);
+	if (!valid_map(data))
 	{
 		free_map(data->map);
 		data->map = NULL;
 		return (printf("Error\n Invalid map\n"), 0);
 	}
-	data->map = getmap(data, data->fd, data->map, tmp);
 	if (!data->map)
 		return (close(data->fd), 0);
 	close(data->fd);
@@ -128,6 +130,7 @@ char	**copy_map(char **map)
 
 static int	check_texture(char **split, char **wall_texture, int *count)
 {
+	printf(split[1], "%s/n");
 	if (ft_strchr(split[1], '.') && ft_strcmp(ft_strrchr(split[1], '.'),
 			".xpm\n") == 0)
 	{
@@ -143,17 +146,16 @@ static int	check_color(char **split, unsigned int *color, int *count)
 	int	r;
 	int	g;
 	int	b;
+	char **tmp;
 
-	split[1] = ft_strtrim(split[1], ",");
-	if (!split[1])
+	tmp = ft_split(split[1], ',');
+	if (!tmp)
 		return (0);
-	split[2] = ft_strtrim(split[2], ",");
-	split[3] = ft_strtrim(split[3], ",");
-	if (split[1] && split[2] && split[3])
+	if (tmp)
 	{
-		r = ft_atoi(split[1]);
-		g = ft_atoi(split[2]);
-		b = ft_atoi(split[3]);
+		r = ft_atoi(tmp[0]);
+		g = ft_atoi(tmp[1]);
+		b = ft_atoi(tmp[2]);
 		if (r >= 0 && r <= 255 && g >= 0 && g <= 255 && b >= 0 && b <= 255)
 		{
 			*color = (r << 16) | (g << 8) | b;
@@ -194,9 +196,9 @@ int	checkcardinal(t_gfx *gfx, int fd)
 	char	*line;
 	char	**split;
 	int		found_count;
-
+	
 	found_count = 0;
-	while (found_count < 6 && (line = get_next_line(fd)))
+	while (found_count <= 6 && (line = get_next_line(fd)))
 	{
 		split = ft_split(line, ' ');
 		free_str(line);
@@ -205,13 +207,11 @@ int	checkcardinal(t_gfx *gfx, int fd)
 		process_cardinal(split, gfx, &found_count);
 		free_array(split);
 	}
-	return (found_count == 6);
+	return (found_count);
 }
 
-int	valid_map(t_data *data, t_gfx *gfx)
+int	valid_map(t_data *data)
 {
-	if (checkcardinal(gfx, data->fd) != 4)
-		return (printf("Error\n Invalid textures path \n"), 0);
 	if (!checkwalls(data))
 		return (0);
 	if (!check_player(data))

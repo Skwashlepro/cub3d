@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 02:13:51 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/10 19:46:28 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/10 21:28:48 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@
 # define A_KEY 0x61
 # define S_KEY 0x73
 # define D_KEY 0x64
-# include "../lib/gnl/get_next_line.h"
-# include "../lib/libft/libft.h"
-# include "mlx.h"
+# include "get_next_line.h"
+# include "libft.h"
 # include <fcntl.h>
 # include <math.h>
+# include <mlx.h>
 # include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -54,7 +54,7 @@ typedef struct s_gfx
 	void			*viewmodel;
 	unsigned int	ceiling_color;
 	unsigned int	floor_color;
-}				t_gfx;
+}					t_gfx;
 
 typedef struct s_player
 {
@@ -109,6 +109,7 @@ int					checkwalls(t_data *data);
 int					checkcardinal(t_gfx *gfx, int fd);
 void				text_init(t_data *data);
 void				free_array(char **array);
-int					valid_map(t_data *data, t_gfx *gfx);
+int					valid_map(t_data *data);
+int					on_window_close(t_data *data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 01:38:10 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/10 19:25:48 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/10 20:48:38 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	text_load(t_data *data, char *PATH, void **texture)
 	*texture = mlx_xpm_file_to_image(disp->mlx, PATH,
 			&width, &height);
 	if (!*texture)
-		return (ft_printf("Error: Failed to load texture: %s\n", PATH), 0);
+		return (printf("Error: Failed to load texture: %s\n", PATH), 0);
 	return (1);
 }
 

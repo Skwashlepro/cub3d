@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 21:44:35 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/09 20:06:00 by lmokhtar         ###   ########.fr       */
+/*   Updated: 2025/06/10 20:04:54 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	check_extension(char *fichier)
 	ext = ft_strchr(fichier, '.');
 	if (ext != NULL && ft_strcmp(ext, ".cub") == 0)
 		return (1);
-	ft_printf("Error\nWrong ext\n");
+	printf("Error\nWrong ext\n");
 	return (0);
 }
 
