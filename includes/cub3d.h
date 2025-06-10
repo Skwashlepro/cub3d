@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 02:13:51 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/10 19:01:32 by lmokhtar         ###   ########.fr       */
+/*   Updated: 2025/06/10 19:44:48 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,11 @@ typedef struct s_img
 
 typedef struct s_gfx
 {
-	char		*wall_path[4];
-	void		*wall[4];
-	void		*viewmodel;
-	int			ceiling_color;
-	int			floor_color;
+	char			*wall_path[4];
+	void			*wall[4];
+	void			*viewmodel;
+	unsigned int	ceiling_color;
+	unsigned int	floor_color;
 }				t_gfx;
 
 typedef struct s_player
