@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 19:48:20 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/06/11 18:47:06 by lmokhtar         ###   ########.fr       */
+/*   Updated: 2025/06/11 19:00:43 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,19 +44,13 @@ static int	error_map(char *buffer)
 
 int	check_closed(t_data *data)
 {
-	int		i;
-	int		ss;
 	// int		j;
 	char	**map_copy;
 
-	ss = 0;
-	i = 0;
 	map_copy = copy_map(data->map);
 	if (!map_copy)
 		return (0);
 	floodfill(data, data->p1.pos_x - 0.5, data->p1.pos_y - 0.5, map_copy);
-	while (map_copy[ss])
-		printf("%s\n", map_copy[ss++]);
 	// while (map_copy[i])
 	// {
 	// 	j = 0;

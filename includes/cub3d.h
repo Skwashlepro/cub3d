@@ -111,5 +111,6 @@ void		free_array(char **array);
 int		valid_map(t_data *data);
 int		on_window_close(t_data *data);
 int		key_listener(int keycode, t_data *data);
+void	map_height(char **map, int *height);
 
 #endif
