@@ -17,7 +17,7 @@ VPATH		= ./srcs/:./srcs/RT:./srcs/parsing:./srcs/input_handling:./srcs/display:.
 INC = -I/usr/include -Iincludes -Ilib/libft -Ilib/gnl
 
 SRC_FILES	= main \
-    parse parse2 display_handling textures\
+    parse parse2 display_handling textures keys\
 	get_next_line get_next_line_utils\
     utils  exits\
 

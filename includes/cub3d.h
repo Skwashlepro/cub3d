@@ -78,6 +78,7 @@ typedef struct s_data
 	t_disp		display;
 	t_player	p1;
 	t_gfx		gfx;
+	t_img		frame;
 	char		**map;
 	int		fd;
 	int		map_height;
@@ -92,7 +93,6 @@ typedef struct s_data
 void		free_str(char *str);
 int		init_map(t_data *data, char *str);
 int		on_window_close(t_data *data);
-void		key_listener(int keycode, t_data *data);
 void		display_init(t_data *data);
 void		free_map(char **map);
 void		free_db(char *str, char *str2);
@@ -110,5 +110,6 @@ void		text_init(t_data *data);
 void		free_array(char **array);
 int		valid_map(t_data *data);
 int		on_window_close(t_data *data);
+int		key_listener(int keycode, t_data *data);
 
 #endif
