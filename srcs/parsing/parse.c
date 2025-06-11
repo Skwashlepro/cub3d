@@ -6,7 +6,7 @@
 /*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 19:48:20 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/06/11 17:09:09 by lmokhtar         ###   ########.fr       */
+/*   Updated: 2025/06/11 18:19:01 by lmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	floodfill(t_data *data, int x, int y, char **map)
 	if (map[y][x] == '1' || map[y][x] == 'X')
 		return ;
 	map[y][x] = 'X';
-	floodfill(data, x + 1, y, map); 
+	floodfill(data, x + 1, y, map);
 	floodfill(data, x - 1, y, map);
 	floodfill(data, x, y + 1, map);
 	floodfill(data, x, y - 1, map);
@@ -45,27 +45,28 @@ static int	error_map(char *buffer)
 
 int	check_closed(t_data *data)
 {
-	int				i;
-	int				ss = 0;
-	int				j;
-	char			**map_copy;
+	int		i;
+	int		ss;
+	int		j;
+	char	**map_copy;
 
+	ss = 0;
+	i = 0;
 	map_copy = copy_map(data->map);
 	if (!map_copy)
 		return (0);
 	floodfill(data, data->p1.pos_x - 0.5, data->p1.pos_y - 0.5, map_copy);
 	while (map_copy[ss])
 		printf("%s\n", map_copy[ss++]);
-	i = 0;
 	while (map_copy[i])
 	{
 		j = 0;
 		while (map_copy[i][j])
 		{
-			if (map_copy[i][j] == '0')
-			{
-				return (free_map(map_copy), 0);
-			}
+			// if (map_copy[i][j] == '0')
+			// {
+			// 	return (free_map(map_copy), 0);
+			// }
 			j++;
 		}
 		i++;
@@ -87,10 +88,10 @@ int	checkwalls(t_data *data)
 		if (j == 0 || j == data->map_width - 1)
 		{
 			if (!check_closed(data))
-				return (printf("Erreur\n"), 0);
+				return (printf("Erreur1\n"), 0);
 		}
-		else if (data->map[j][0] != '1' || data->map[j][i - 1] != '1')
-			return (printf("Erreur\n"), 0);
+		// else if(data->map[j][0] != '1' || data->map[j][i - 1] != '1')
+		// 	return (printf("Erreur2\n"), 0);
 		j++;
 	}
 	return (1);
@@ -117,11 +118,11 @@ char	**getmap(t_data *data, int fd, char **map, char *tmp)
 				return (printf("Error\nempty file\n"), NULL);
 			break ;
 		}
-		if (!data->buffer) // ca sert a quoi ? / je sais meme plus mdrrr jle met en commentaire pour l'instant
-				data->buffer = ft_strdup2("");
-			tmp = data->buffer;
+		if (!data->buffer) 
+			data->buffer = ft_strdup2("");
+		tmp = data->buffer;
 		data->buffer = ft_strjoin2(tmp, data->line);
-		if (error_map(data->line) == 1) // change enleve le "if" et change data->error dans error_map ca fait gagner des lignes et c'est +1000 aura data->error = 1;
+		if (error_map(data->line) == 1)
 			free_db(tmp, data->line);
 	}
 	if (data->error == 1)
