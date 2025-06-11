@@ -6,7 +6,7 @@
 /*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 19:48:20 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/06/11 16:12:36 by lmokhtar         ###   ########.fr       */
+/*   Updated: 2025/06/11 16:33:50 by lmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 static void	floodfill(t_data *data, int x, int y, char **map)
 {
-	if (y < 0 || x < 0 || y >= data->map_height || x >= data->map_width
-		|| map[y][x] == ' ')
+	if (y < 0 || x < 0 || y >= data->map_height || x >= data->map_width)
 		return ;
 	if (map[y][x] == '1' || map[y][x] == 'X')
 		return ;
