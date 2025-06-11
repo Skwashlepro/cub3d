@@ -30,7 +30,7 @@ $(OBJ_DIR):
 	@mkdir -p $@
 
 $(OBJ_DIR)/%.o: %.c
-	$(CC) $(CFLAGS) $(INC) -Imlx_linux -O3 -c $< -o $@
+	@$(CC) $(CFLAGS) $(INC) -Imlx_linux -O3 -c $< -o $@
 
 $(NAME): $(OBJ) 
 	@echo "$(SEPIA)$(BOLD)Assembling YoRHa unit [$(NAME)]...$(RESET)"

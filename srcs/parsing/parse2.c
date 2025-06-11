@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 19:03:15 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/06/11 16:08:58 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/11 16:18:13 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,7 @@ static int	check_color(char **split, unsigned int *color, int *count)
 	int	b;
 	char **tmp;
 
+	printf("split[1] = %s\n", split[1]);
 	tmp = ft_split(split[1], ',');
 	if (!tmp)
 		return (0);
@@ -198,8 +199,11 @@ int	checkcardinal(t_gfx *gfx, int fd)
 	int		found_count;
 	
 	found_count = 0;
-	while (found_count <= 6 && (line = get_next_line(fd)))
+	while (found_count < 6)
 	{
+		line = get_next_line(fd);
+		if(!line)
+			break ;
 		split = ft_split(line, ' ');
 		free_str(line);
 		if (!split)
