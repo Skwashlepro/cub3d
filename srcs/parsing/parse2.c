@@ -6,7 +6,7 @@
 /*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 19:03:15 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/06/11 18:35:02 by lmokhtar         ###   ########.fr       */
+/*   Updated: 2025/06/11 18:47:39 by lmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,6 @@ char	**copy_map(char **map)
 
 static int	check_texture(char **split, char **wall_texture, int *count)
 {
-	printf(split[1], "%s/n");
 	if (ft_strchr(split[1], '.') && ft_strcmp(ft_strrchr(split[1], '.'),
 			".xpm\n") == 0)
 	{
@@ -148,7 +147,6 @@ static int	check_color(char **split, unsigned int *color, int *count)
 	int	b;
 	char **tmp;
 
-	printf("split[1] = %s\n", split[1]);
 	tmp = ft_split(split[1], ',');
 	if (!tmp)
 		return (0);

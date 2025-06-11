@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 21:55:38 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/10 19:49:22 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/11 18:38:26 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,14 @@ void	cub3d(t_data *data)
 	text_init(data);
 }
 
-int	render_frame(t_data *data)
+int		render_frame(t_data *data)
 {
-	t_img	frame;
+	t_img		frame;
 	int		x;
 	int		y;
-	
+	unsigned int	color;
+	char		*dst;
+
 	y = -1;
 	frame.img = mlx_new_image(data->display.mlx, WIDTH, HEIGHT);
 	frame.addr = mlx_get_data_addr(frame.img, &frame.bpp, &frame.line_length, &frame.endian);
@@ -31,18 +33,16 @@ int	render_frame(t_data *data)
 	while (++y < HEIGHT)
 	{
 		x = -1;
+		color = (y < HEIGHT / 2) ? data->gfx.ceiling_color : data->gfx.floor_color;
 		while (++x < WIDTH)
 		{
-			if (y < HEIGHT / 2)
-				mlx_pixel_put(data->display.mlx, data->display.mlx_win, x, y, data->gfx.ceiling_color);
-			else
-				mlx_pixel_put(data->display.mlx, data->display.mlx_win, x, y, data->gfx.floor_color);
+			dst = frame.addr + (y * frame.line_length + x * (frame.bpp / 8));
+			*(unsigned int *)dst = color;
 		}
 	}
 	mlx_put_image_to_window(data->display.mlx, data->display.mlx_win, frame.img, 0, 0);
 	mlx_destroy_image(data->display.mlx, frame.img);
 	return (0);
-	
 }
 
 void	display_init(t_data *data)

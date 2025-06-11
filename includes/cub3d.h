@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cub3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -36,59 +36,58 @@ typedef enum e_card
 	S = 1,
 	W = 2,
 	E = 3
-}					t_card;
+} t_card;
 
 typedef struct s_img
 {
-	void			*img;
-	char			*addr;
-	int				bpp;
-	int				line_length;
-	int				endian;
-}					t_img;
+	void		*img;
+	char		*addr;
+	int		bpp;
+	int		line_length;
+	int		endian;
+} t_img;
 
 typedef struct s_gfx
 {
-	char			*wall_path[4];
-	void			*wall[4];
-	void			*viewmodel;
+	char		*wall_path[4];
+	void		*wall[4];
+	void		*viewmodel;
 	unsigned int	ceiling_color;
 	unsigned int	floor_color;
-}					t_gfx;
+} t_gfx;
 
 typedef struct s_player
 {
-	double			pos_x;
-	double			pos_y;
-	double			dir_x;
-	double			dir_y;
-	double			plane_x;
-	double			plane_y;
-}					t_player;
+	double		pos_x;
+	double		pos_y;
+	double		dir_x;
+	double		dir_y;
+	double		plane_x;
+	double		plane_y;
+} t_player;
 
 typedef struct s_disp
 {
-	char			**map;
-	void			*mlx;
-	void			*mlx_win;
-}					t_disp;
+	char		**map;
+	void		*mlx;
+	void		*mlx_win;
+} t_disp;
 
 typedef struct s_data
 {
-	t_disp			display;
-	t_player		p1;
-	t_gfx			gfx;
-	char			**map;
-	int				fd;
-	int				map_height;
-	int				map_width;
-	int				x;
-	int				y;
-	bool			error;
-	char			*buffer;
-	char			*line;
-
-}					t_data;
+	t_disp		display;
+	t_player	p1;
+	t_gfx		gfx;
+	char		**map;
+	int		fd;
+	int		map_height;
+	int		map_width;
+	int		x;
+	int		y;
+	bool		error;
+	char		*buffer;
+	char		*line;
+} t_data;
 
 void				free_str(char *str);
 int					init_map(t_data *data, char *str);
