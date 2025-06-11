@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 19:03:15 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/06/11 15:56:58 by lmokhtar         ###   ########.fr       */
+/*   Updated: 2025/06/11 16:52:11 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,10 +216,10 @@ int	checkcardinal(t_gfx *gfx, int fd)
 
 int	valid_map(t_data *data)
 {
-	if (!checkwalls(data))
-		return (0);
 	if (!check_player(data))
 		return (printf("Error\n Invalid player position or character\n"), 0);
+	if (!checkwalls(data))
+		return (0);
 	if (!check_closed(data))
 		return (printf("Error\n Map is not closed\n"), 0);
 	return (1);
