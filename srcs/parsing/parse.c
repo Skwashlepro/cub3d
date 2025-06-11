@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 19:48:20 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/06/11 16:18:38 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/11 16:57:07 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void	floodfill(t_data *data, int x, int y, char **map)
 {
+	printf("Floodfill at (%d, %d)\n", x, y);
 	if (y < 0 || x < 0 || y >= data->map_height || x >= data->map_width
 		|| map[y][x] == ' ')
 		return ;
@@ -45,13 +46,16 @@ static int	error_map(char *buffer)
 int	check_closed(t_data *data)
 {
 	int				i;
+	int				ss = 0;
 	int				j;
 	char			**map_copy;
 
 	map_copy = copy_map(data->map);
 	if (!map_copy)
 		return (0);
-	floodfill(data, data->p1.pos_x, data->p1.pos_y, map_copy);
+	floodfill(data, data->p1.pos_x - 0.5, data->p1.pos_y - 0.5, map_copy);
+	while (map_copy[ss])
+		printf("%s\n", map_copy[ss++]);
 	i = 0;
 	while (map_copy[i])
 	{
@@ -92,12 +96,21 @@ int	checkwalls(t_data *data)
 	return (1);
 }
 
+void	map_height(char **map, int *height)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+		i++;
+	*height = i;
+}
+
 char	**getmap(t_data *data, int fd, char **map, char *tmp)
 {
 	while (fd)
 	{
 		data->line = get_next_line(fd);
-		// printf("line: %s\n", data->line);
 		if (!data->line)
 		{
 			if (!data->buffer)
@@ -109,13 +122,13 @@ char	**getmap(t_data *data, int fd, char **map, char *tmp)
 			tmp = data->buffer;
 		data->buffer = ft_strjoin2(tmp, data->line);
 		if (error_map(data->line) == 1) // change enleve le "if" et change data->error dans error_map ca fait gagner des lignes et c'est +1000 aura data->error = 1;
-			free_db(tmp, data->line);	
-		data->map_width++;
+			free_db(tmp, data->line);
 	}
 	if (data->error == 1)
 		return (free_str(data->buffer), NULL);
 	map = ft_split(data->buffer, '\n');
 	if (!map)
 		return (free_str(data->buffer), NULL);
+	map_height(map, &data->map_height);
 	return (free_str(data->buffer), map);
 }
