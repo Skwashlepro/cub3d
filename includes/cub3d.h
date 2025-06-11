@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cub3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -36,80 +36,79 @@ typedef enum e_card
 	S = 1,
 	W = 2,
 	E = 3
-}					t_card;
+} t_card;
 
 typedef struct s_img
 {
-	void			*img;
-	char			*addr;
-	int				bpp;
-	int				line_length;
-	int				endian;
-}					t_img;
+	void		*img;
+	char		*addr;
+	int		bpp;
+	int		line_length;
+	int		endian;
+} t_img;
 
 typedef struct s_gfx
 {
-	char			*wall_path[4];
-	void			*wall[4];
-	void			*viewmodel;
+	char		*wall_path[4];
+	void		*wall[4];
+	void		*viewmodel;
 	unsigned int	ceiling_color;
 	unsigned int	floor_color;
-}					t_gfx;
+} t_gfx;
 
 typedef struct s_player
 {
-	double			pos_x;
-	double			pos_y;
-	double			dir_x;
-	double			dir_y;
-	double			plane_x;
-	double			plane_y;
-}					t_player;
+	double		pos_x;
+	double		pos_y;
+	double		dir_x;
+	double		dir_y;
+	double		plane_x;
+	double		plane_y;
+} t_player;
 
 typedef struct s_disp
 {
-	char			**map;
-	void			*mlx;
-	void			*mlx_win;
-}					t_disp;
+	char		**map;
+	void		*mlx;
+	void		*mlx_win;
+} t_disp;
 
 typedef struct s_data
 {
-	t_disp			display;
-	t_player		p1;
-	t_gfx			gfx;
-	char			**map;
-	int				fd;
-	int				map_height;
-	int				map_width;
-	int				x;
-	int				y;
-	bool			error;
-	char			*buffer;
-	char			*line;
+	t_disp		display;
+	t_player	p1;
+	t_gfx		gfx;
+	char		**map;
+	int		fd;
+	int		map_height;
+	int		map_width;
+	int		x;
+	int		y;
+	bool		error;
+	char		*buffer;
+	char		*line;
+} t_data;
 
-}					t_data;
-
-void				free_str(char *str);
-int					init_map(t_data *data, char *str);
-int					on_window_close(t_data *data);
-void				key_listener(int keycode, t_data *data);
-void				display_init(t_data *data);
-void				free_map(char **map);
-void				free_db(char *str, char *str2);
-void				free_str(char *str);
-int					check_extension(char *fichier);
-int					check_player(t_data *data);
-char				**copy_map(char **map);
-char				**getmap(t_data *data, int fd, char **map, char *tmp);
-void				ft_kill(t_data *data, int code);
-void				cub_start(t_data *data);
-int					check_closed(t_data *data);
-int					checkwalls(t_data *data);
-int					checkcardinal(t_gfx *gfx, int fd);
-void				text_init(t_data *data);
-void				free_array(char **array);
-int					valid_map(t_data *data);
-int					on_window_close(t_data *data);
+void		free_str(char *str);
+int		init_map(t_data *data, char *str);
+int		on_window_close(t_data *data);
+void		key_listener(int keycode, t_data *data);
+void		display_init(t_data *data);
+void		free_map(char **map);
+void		free_db(char *str, char *str2);
+void		free_str(char *str);
+int		check_extension(char *fichier);
+int		check_player(t_data *data);
+char		**copy_map(char **map);
+char		**getmap(t_data *data, int fd, char **map, char *tmp);
+void		ft_kill(t_data *data, int code);
+void		cub_start(t_data *data);
+int		check_closed(t_data *data);
+int		checkwalls(t_data *data);
+int		checkcardinal(t_gfx *gfx, int fd);
+void		text_init(t_data *data);
+void		free_array(char **array);
+int		valid_map(t_data *data);
+int		on_window_close(t_data *data);
 
 #endif
