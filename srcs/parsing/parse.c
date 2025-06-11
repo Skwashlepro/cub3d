@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 19:48:20 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/06/11 16:57:07 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/11 18:17:57 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static void	floodfill(t_data *data, int x, int y, char **map)
 {
-	printf("Floodfill at (%d, %d)\n", x, y);
 	if (y < 0 || x < 0 || y >= data->map_height || x >= data->map_width
 		|| map[y][x] == ' ')
 		return ;
@@ -46,16 +45,13 @@ static int	error_map(char *buffer)
 int	check_closed(t_data *data)
 {
 	int				i;
-	int				ss = 0;
 	int				j;
 	char			**map_copy;
 
 	map_copy = copy_map(data->map);
 	if (!map_copy)
 		return (0);
-	floodfill(data, data->p1.pos_x - 0.5, data->p1.pos_y - 0.5, map_copy);
-	while (map_copy[ss])
-		printf("%s\n", map_copy[ss++]);
+	floodfill(data, data->p1.pos_x - 0.5, data->p1.pos_y - 0.5, map_copy); 
 	i = 0;
 	while (map_copy[i])
 	{
@@ -64,7 +60,7 @@ int	check_closed(t_data *data)
 		{
 			if (map_copy[i][j] == '0')
 			{
-				return (free_map(map_copy), 0);
+				return (free_map(map_copy), 1);
 			}
 			j++;
 		}
@@ -87,10 +83,10 @@ int	checkwalls(t_data *data)
 		if (j == 0 || j == data->map_width - 1)
 		{
 			if (!check_closed(data))
-				return (printf("Erreur\n"), 0);
+				return (printf("Erreur1\n"), 0);
 		}
 		else if (data->map[j][0] != '1' || data->map[j][i - 1] != '1')
-			return (printf("Erreur\n"), 0);
+			return (printf("Erreur2\n"), 1);
 		j++;
 	}
 	return (1);
