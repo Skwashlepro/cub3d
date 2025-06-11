@@ -6,7 +6,7 @@
 /*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 19:48:20 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/06/11 18:19:01 by lmokhtar         ###   ########.fr       */
+/*   Updated: 2025/06/11 18:45:53 by lmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	check_closed(t_data *data)
 {
 	int		i;
 	int		ss;
-	int		j;
+	// int		j;
 	char	**map_copy;
 
 	ss = 0;
@@ -58,20 +58,52 @@ int	check_closed(t_data *data)
 	floodfill(data, data->p1.pos_x - 0.5, data->p1.pos_y - 0.5, map_copy);
 	while (map_copy[ss])
 		printf("%s\n", map_copy[ss++]);
-	while (map_copy[i])
-	{
-		j = 0;
-		while (map_copy[i][j])
-		{
-			// if (map_copy[i][j] == '0')
-			// {
-			// 	return (free_map(map_copy), 0);
-			// }
-			j++;
-		}
-		i++;
-	}
+	// while (map_copy[i])
+	// {
+	// 	j = 0;
+	// 	while (map_copy[i][j])
+	// 	{
+	// 		if (map_copy[i][j] == '0')
+	// 		{
+	// 			return (free_map(map_copy), 0);
+	// 		}
+	// 		j++;
+	// 	}
+	// 	i++;
+	// }
 	free_map(map_copy);
+	return (1);
+}
+
+// int	checkwalls(t_data *data)
+// {
+// 	int	i;
+// 	int	j;
+
+// 	i = ft_strlen(data->map[0]);
+// 	data->map_width = i;
+// 	j = 0;
+// 	while (data->map[j])
+// 	{
+// 		if (j == 0 || j == data->map_width - 1)
+// 		{
+
+// 		}
+// 		// else if(data->map[j][0] != '1' || data->map[j][i - 1] != '1')
+// 		// 	return (printf("Erreur2\n"), 0);
+// 		j++;
+// 	}
+// 	return (1);
+// }
+
+static int	check_surrounding_cells(t_data *data, int i, int j, int row_len)
+{
+	if (i == 0 || j == 0 || i == data->map_height - 1 || j == row_len - 1)
+		return (printf("Error: Map not closed at boundary [%d][%d]\n", i, j),
+			0);
+	if (data->map[i - 1][j] == ' ' || data->map[i + 1][j] == ' '
+		|| data->map[i][j - 1] == ' ' || data->map[i][j + 1] == ' ')
+		return (printf("Error: Map not closed at [%d][%d]\n", i, j), 0);
 	return (1);
 }
 
@@ -79,20 +111,25 @@ int	checkwalls(t_data *data)
 {
 	int	i;
 	int	j;
+	int	row_len;
 
-	i = ft_strlen(data->map[0]);
-	data->map_width = i;
-	j = 0;
-	while (data->map[j])
+	map_height(data->map, &data->map_height);
+	data->map_width = ft_strlen(data->map[0]);
+	i = -1;
+	while (++i < data->map_height)
 	{
-		if (j == 0 || j == data->map_width - 1)
+		row_len = ft_strlen(data->map[i]);
+		j = -1;
+		while (++j < row_len)
 		{
-			if (!check_closed(data))
-				return (printf("Erreur1\n"), 0);
+			if (data->map[i][j] == '0' || data->map[i][j] == 'N'
+				|| data->map[i][j] == 'S' || data->map[i][j] == 'E'
+				|| data->map[i][j] == 'W')
+			{
+				if (!check_surrounding_cells(data, i, j, row_len))
+					return (0);
+			}
 		}
-		// else if(data->map[j][0] != '1' || data->map[j][i - 1] != '1')
-		// 	return (printf("Erreur2\n"), 0);
-		j++;
 	}
 	return (1);
 }
@@ -118,7 +155,7 @@ char	**getmap(t_data *data, int fd, char **map, char *tmp)
 				return (printf("Error\nempty file\n"), NULL);
 			break ;
 		}
-		if (!data->buffer) 
+		if (!data->buffer)
 			data->buffer = ft_strdup2("");
 		tmp = data->buffer;
 		data->buffer = ft_strjoin2(tmp, data->line);
