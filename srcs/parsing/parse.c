@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 19:48:20 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/06/10 21:33:40 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/11 16:09:54 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,6 @@ char	**getmap(t_data *data, int fd, char **map, char *tmp)
 	while (fd)
 	{
 		data->line = get_next_line(fd);
-		printf("line: %s\n", data->line);
 		if (!data->line)
 		{
 			if (!data->buffer)
