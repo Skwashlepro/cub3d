@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 19:48:20 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/06/10 21:33:40 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/11 16:12:36 by lmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	floodfill(t_data *data, int x, int y, char **map)
 	if (map[y][x] == '1' || map[y][x] == 'X')
 		return ;
 	map[y][x] = 'X';
-	floodfill(data, x + 1, y, map); // a partir de mtn bismillah land
+	floodfill(data, x + 1, y, map); 
 	floodfill(data, x - 1, y, map);
 	floodfill(data, x, y + 1, map);
 	floodfill(data, x, y - 1, map);
@@ -59,7 +59,9 @@ int	check_closed(t_data *data)
 		while (map_copy[i][j])
 		{
 			if (map_copy[i][j] == '0')
+			{
 				return (free_map(map_copy), 0);
+			}
 			j++;
 		}
 		i++;
@@ -95,7 +97,7 @@ char	**getmap(t_data *data, int fd, char **map, char *tmp)
 	while (fd)
 	{
 		data->line = get_next_line(fd);
-		printf("line: %s\n", data->line);
+		// printf("line: %s\n", data->line);
 		if (!data->line)
 		{
 			if (!data->buffer)
