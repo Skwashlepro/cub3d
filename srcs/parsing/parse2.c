@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 19:03:15 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/06/11 18:47:39 by lmokhtar         ###   ########.fr       */
+/*   Updated: 2025/06/11 19:08:33 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	init_map(t_data *data, char *str)
 	data->map = getmap(data, data->fd, data->map, tmp);
 	if (!valid_map(data))
 	{
-		free_map(data->map);
+		free_array(data->map);
 		data->map = NULL;
 		return (printf("Error\n Invalid map\n"), 0);
 	}
@@ -119,7 +119,7 @@ char	**copy_map(char **map)
 		copy[i] = ft_strdup(map[i]);
 		if (!copy[i])
 		{
-			free_map(copy);
+			free_array(copy);
 			return (NULL);
 		}
 		i++;

@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 21:44:35 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/10 20:04:54 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/11 19:35:17 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,24 +22,9 @@ void	free_str(char *str)
 
 void	free_db(char *str, char *str2)
 {
-	free(str);
-	free(str2);
+	free_str(str);
+	free_str(str2);
 	return ;
-}
-
-void	free_map(char **map)
-{
-	int	i;
-
-	if (!map)
-		return ;
-	i = 0;
-	while (map[i])
-	{
-		free(map[i]);
-		i++;
-	}
-	free(map);
 }
 
 int	check_extension(char *fichier)

@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 19:48:20 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/06/11 19:00:43 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/11 19:34:18 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,13 @@ int	check_closed(t_data *data)
 	// 	{
 	// 		if (map_copy[i][j] == '0')
 	// 		{
-	// 			return (free_map(map_copy), 0);
+	// 			return (free_array(map_copy), 0);
 	// 		}
 	// 		j++;
 	// 	}
 	// 	i++;
 	// }
-	free_map(map_copy);
+	free_array(map_copy);
 	return (1);
 }
 
@@ -145,15 +145,15 @@ char	**getmap(t_data *data, int fd, char **map, char *tmp)
 		if (!data->line)
 		{
 			if (!data->buffer)
-				return (printf("Error\nempty file\n"), NULL);
+				return (free_str(data->line), ("Error\nempty file\n"), NULL);
 			break ;
 		}
 		if (!data->buffer)
 			data->buffer = ft_strdup2("");
 		tmp = data->buffer;
 		data->buffer = ft_strjoin2(tmp, data->line);
-		if (error_map(data->line) == 1)
-			free_db(tmp, data->line);
+		if (error_map(data->line) == 0)
+			free_db(&data->buffer, &data->line);
 	}
 	if (data->error == 1)
 		return (free_str(data->buffer), NULL);
