@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 19:48:20 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/06/11 19:34:18 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/13 01:06:04 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,8 +152,8 @@ char	**getmap(t_data *data, int fd, char **map, char *tmp)
 			data->buffer = ft_strdup2("");
 		tmp = data->buffer;
 		data->buffer = ft_strjoin2(tmp, data->line);
-		if (error_map(data->line) == 0)
-			free_db(&data->buffer, &data->line);
+		if (error_map(data->line) == 1)
+			free_db(data->buffer, data->line);
 	}
 	if (data->error == 1)
 		return (free_str(data->buffer), NULL);
