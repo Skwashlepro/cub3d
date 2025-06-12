@@ -112,5 +112,7 @@ int		valid_map(t_data *data);
 int		on_window_close(t_data *data);
 int		key_listener(int keycode, t_data *data);
 void	map_height(char **map, int *height);
+void	free_textures(int i, t_data *data);
+void clear_db(t_data *data);
 
 #endif

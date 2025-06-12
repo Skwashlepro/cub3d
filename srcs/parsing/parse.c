@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 19:48:20 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/06/13 01:22:31 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/13 01:23:29 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,21 @@ static void	floodfill(t_data *data, int x, int y, char **map)
 	floodfill(data, x, y - 1, map);
 }
 
-static int	error_map(char *buffer)
-{
-	int	i;
+// static int	error_map(char *buffer)
+// {
+// 	int	i;
 
-	if (buffer[0] == '\n')
-		return (1);
-	i = 1;
-	while (buffer[i] != '\0')
-	{
-		if (buffer[i] != ' ' && buffer[i] != '\n' && buffer[i - 1] == ' ')
-			return (1);
-		i++;
-	}
-	return (0);
-}
+// 	if (buffer[0] == '\n')
+// 		return (1);
+// 	i = 1;
+// 	while (buffer[i] != '\0')
+// 	{
+// 		if (buffer[i] != ' ' && buffer[i] != '\n' && buffer[i - 1] == ' ')
+// 			return (1);
+// 		i++;
+// 	}
+// 	return (0);
+// }
 
 int	check_closed(t_data *data)
 {
@@ -152,7 +152,7 @@ char	**getmap(t_data *data, int fd, char **map, char *tmp)
 			data->buffer = ft_strdup2("");
 		tmp = data->buffer;
 		data->buffer = ft_strjoin2(tmp, data->line);
-		if (error_map(data->line) == 1)
+		// if (error_map(data->line) == 1)
 			free_db(tmp, data->line);
 	}
 	if (data->error == 1)

@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 19:03:15 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/06/11 19:08:33 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/13 01:58:06 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,7 @@ static int	check_texture(char **split, char **wall_texture, int *count)
 			".xpm\n") == 0)
 	{
 		*wall_texture = ft_strdup(split[1]);
+		free(wall_texture[0]);
 		(*count)++;
 		return (1);
 	}
@@ -159,9 +160,10 @@ static int	check_color(char **split, unsigned int *color, int *count)
 		{
 			*color = (r << 16) | (g << 8) | b;
 			(*count)++;
-			return (1);
+			return (free_array(tmp), 1);
 		}
 	}
+	free_array(tmp);
 	return (0);
 }
 

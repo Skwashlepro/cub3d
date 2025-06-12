@@ -6,15 +6,17 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 02:52:45 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/11 19:02:56 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/13 01:55:59 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+
 void	ft_kill(t_data *data, int code)
 {
-	free_array(data->map);
+	clear_db(data);
+	mlx_destroy_window(data->display.mlx, data->display.mlx_win);
 	mlx_destroy_display(data->display.mlx);
 	free(data->display.mlx);
 	exit(code);
