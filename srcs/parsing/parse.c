@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 19:48:20 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/06/13 01:17:14 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/13 01:22:31 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,7 @@ char	**getmap(t_data *data, int fd, char **map, char *tmp)
 		if (!data->line)
 		{
 			if (!data->buffer)
-				return (free_str(data->line), ("Error\nempty file\n"), NULL);
+				return (printf("Error\nempty file\n"), NULL);
 			break ;
 		}
 		if (!data->buffer)
@@ -153,7 +153,7 @@ char	**getmap(t_data *data, int fd, char **map, char *tmp)
 		tmp = data->buffer;
 		data->buffer = ft_strjoin2(tmp, data->line);
 		if (error_map(data->line) == 1)
-			free_db(data->buffer, data->line);
+			free_db(tmp, data->line);
 	}
 	if (data->error == 1)
 		return (free_str(data->buffer), NULL);
