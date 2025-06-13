@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 19:03:15 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/06/13 02:47:46 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/13 17:13:38 by lmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,11 @@ static int	check_texture(char **split, char **wall_texture, int *count)
 	if (ft_strchr(split[1], '.') && ft_strcmp(ft_strrchr(split[1], '.'),
 			".xpm\n") == 0)
 	{
+		if(open(split[1], O_RDONLY) == -1)
+		{
+			printf("Error\n Texture file not found: %s\n", split[1]);
+			return (0);
+		}
 		*wall_texture = ft_strdup(split[1]);
 		free(wall_texture[0]);
 		(*count)++;
@@ -218,8 +223,8 @@ int	valid_map(t_data *data)
 {
 	if (!check_player(data))
 		return (printf("Error\n Invalid player position or character\n"), 0);
-	data->map_x = (int)data->p1.pos_x;
-	data->map_y = (int)data->p1.pos_y;
+	// data->map_x = (int)data->p1.pos_x;
+	// data->map_y = (int)data->p1.pos_y;
 	if (!checkwalls(data))
 		return (0);
 	if (!check_closed(data))

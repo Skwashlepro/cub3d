@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 19:48:20 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/06/13 02:26:28 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/13 16:51:22 by lmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,3 +163,4 @@ char	**getmap(t_data *data, int fd, char **map, char *tmp)
 	map_height(map, &data->map_height);
 	return (free_str(data->buffer), map);
 }
+

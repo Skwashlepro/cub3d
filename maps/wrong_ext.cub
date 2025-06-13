@@ -1,0 +1,10 @@
+NO ./texture.png
+SO ./texture.jpg
+WE ./texture.bmp
+EA ./texture.txt
+F 255,0,0
+C 0,255,0
+
+1111
+1W01
+1111

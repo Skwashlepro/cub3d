@@ -20,6 +20,7 @@
 # define A_KEY 0x61
 # define S_KEY 0x73
 # define D_KEY 0x64
+
 # include "get_next_line.h"
 # include "libft.h"
 # include <fcntl.h>
@@ -32,6 +33,7 @@
 
 # ifndef M_PI
 #  define M_PI 3.14159265358979323846
+# endif
 
 typedef struct s_ray
 {
@@ -140,5 +142,5 @@ void				map_height(char **map, int *height);
 void				free_textures(int i, t_data *data);
 void				clear_db(t_data *data);
 
-# endif
+// # endif
 #endif
