@@ -6,7 +6,7 @@
 /*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 01:29:51 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/13 17:29:58 by lmokhtar         ###   ########.fr       */
+/*   Updated: 2025/06/13 18:20:56 by lmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,57 @@ void	init_ray(t_data *data, int x)
 	ray->delta_dist_y = fabs(1 / ray->dir_y);
 }
 
-void	cub_init(t_data *data)
+void	DDA(t_data *data)
 {
-	init_raycasting(data);
-	raycast(data);
+	t_ray	*ray;
+
+	ray = &data->ray;
+	ray->hit = 0;
+	while (ray->hit == 0)
+	{
+		if (ray->side_dist_x < ray->side_dist_y)
+		{
+			ray->side_dist_x += ray->delta_dist_x;
+			ray->map_x += ray->step_x;
+			ray->side = 0;
+		}
+		else
+		{
+			ray->side_dist_y += ray->delta_dist_y;
+			ray->map_y += ray->step_y;
+			ray->side = 1;
+		}
+		if (data->map[ray->map_y][ray->map_x] == '1')
+			ray->hit = 1;
+	}
+}
+
+void	wall_distance(t_data *data)
+{
+	t_ray	*ray;
+
+	ray = &data->ray;
+	if (ray->side == 0)
+		ray->perp_wall_dist = (ray->map_x - data->p1.pos_x + (1 - ray->step_x)
+				/ 2) / ray->dir_x;
+	else
+		ray->perp_wall_dist = (ray->map_y - data->p1.pos_y + (1 - ray->step_y)
+				/ 2) / ray->dir_y;
+	ray->line_height = (int)(HEIGHT / ray->perp_wall_dist);
+	ray->draw_start = -ray->line_height / 2 + HEIGHT / 2;
+	if (ray->draw_start < 0)
+		ray->draw_start = 0;
+	ray->draw_end = ray->line_height / 2 + HEIGHT / 2;
+	if (ray->draw_end >= HEIGHT)
+		ray->draw_end = HEIGHT - 1;
+}
+
+void draw_walls(t_data *data)
+{
+	t_ray	*ray;
+	ray = &data->ray;
+
+	// dessiner les murs en fonction de la distance en utilisants les textures stockes dans nos structures
 }
 
 void	raycast(t_data *data)
@@ -90,6 +137,14 @@ void	raycast(t_data *data)
 	{
 		init_ray(data, x);
 		ray_steps(data);
+		DDA(data);
+		wall_distance(data);
 		x++;
 	}
+}
+
+void	cub_init(t_data *data)
+{
+	init_raycasting(data);
+	raycast(data);
 }
