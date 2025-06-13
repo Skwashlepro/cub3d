@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 02:21:46 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/09 19:48:20 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/13 02:31:38 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ void	side(int keycode)
 	{
 	}
 }
-void	fwd();
+void	fwd(void);
 
-void	back();
+void	back(void);

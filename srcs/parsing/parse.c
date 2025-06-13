@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 19:48:20 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/06/13 01:23:29 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/13 02:26:28 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	check_closed(t_data *data)
 	map_copy = copy_map(data->map);
 	if (!map_copy)
 		return (0);
-	floodfill(data, data->p1.pos_x - 0.5, data->p1.pos_y - 0.5, map_copy);
+	floodfill(data, (int)data->p1.pos_x, (int)data->p1.pos_y, map_copy);
 	// while (map_copy[i])
 	// {
 	// 	j = 0;

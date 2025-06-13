@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 01:38:10 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/13 01:33:11 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/13 02:32:12 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ int	text_load(t_data *data, char *PATH, void **texture)
 	height = 0;
 	disp = &data->display;
 	(void)PATH;
-	*texture = mlx_xpm_file_to_image(disp->mlx, "textures/mur.xpm",
-			&width, &height);
+	*texture = mlx_xpm_file_to_image(disp->mlx, "textures/mur.xpm", &width,
+			&height);
 	if (!*texture)
 		return (printf("Error: Failed to load texture: %s\n", PATH), 0);
 	return (1);
@@ -47,8 +47,8 @@ int	text_load(t_data *data, char *PATH, void **texture)
 
 void	text_init(t_data *data)
 {
-	t_gfx	*text;
-	int		i;
+	t_gfx *text;
+	int i;
 
 	i = -1;
 	text = &data->gfx;

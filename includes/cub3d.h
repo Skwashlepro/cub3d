@@ -30,89 +30,115 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+# ifndef M_PI
+#  define M_PI 3.14159265358979323846
+
+typedef struct s_ray
+{
+	double			dir_x;
+	double			dir_y;
+	double			camera_x;
+	double			delta_dist_x;
+	double			delta_dist_y;
+	double			side_dist_x;
+	double			side_dist_y;
+	int				step_x;
+	int				step_y;
+	int				map_x;
+	int				map_y;
+	int				hit;
+	int				side;
+	double			perp_wall_dist;
+	int				line_height;
+	int				draw_start;
+	int				draw_end;
+}					t_ray;
+
 typedef enum e_card
 {
 	N = 0,
 	S = 1,
 	W = 2,
 	E = 3
-} t_card;
+}					t_card;
 
 typedef struct s_img
 {
-	void		*img;
-	char		*addr;
-	int		bpp;
-	int		line_length;
-	int		endian;
-} t_img;
+	void			*img;
+	char			*addr;
+	int				bpp;
+	int				line_length;
+	int				endian;
+}					t_img;
 
 typedef struct s_gfx
 {
-	char		*wall_path[4];
-	void		*wall[4];
-	void		*viewmodel;
+	char			*wall_path[4];
+	void			*wall[4];
+	void			*viewmodel;
 	unsigned int	ceiling_color;
 	unsigned int	floor_color;
-} t_gfx;
+}					t_gfx;
 
 typedef struct s_player
 {
-	double		pos_x;
-	double		pos_y;
-	double		dir_x;
-	double		dir_y;
-	double		plane_x;
-	double		plane_y;
-} t_player;
+	double			pos_x;
+	double			pos_y;
+	double			dir_x;
+	double			dir_y;
+	double			plane_x;
+	double			plane_y;
+}					t_player;
 
 typedef struct s_disp
 {
-	char		**map;
-	void		*mlx;
-	void		*mlx_win;
-} t_disp;
+	char			**map;
+	void			*mlx;
+	void			*mlx_win;
+}					t_disp;
 
 typedef struct s_data
 {
-	t_disp		display;
-	t_player	p1;
-	t_gfx		gfx;
-	t_img		frame;
-	char		**map;
-	int		fd;
-	int		map_height;
-	int		map_width;
-	int		x;
-	int		y;
-	bool		error;
-	char		*buffer;
-	char		*line;
-} t_data;
+	t_disp			display;
+	t_player		p1;
+	t_gfx			gfx;
+	t_img			frame;
+	t_ray			ray;
+	char			**map;
+	int				fd;
+	int				map_height;
+	int				map_width;
+	int				x;
+	int				y;
+	bool			error;
+	char			*buffer;
+	char			*line;
+}					t_data;
 
-void		free_str(char *str);
-int		init_map(t_data *data, char *str);
-int		on_window_close(t_data *data);
-void		display_init(t_data *data);
-void		free_map(char **map);
-void		free_db(char *str, char *str2);
-void		free_str(char *str);
-int		check_extension(char *fichier);
-int		check_player(t_data *data);
-char		**copy_map(char **map);
-char		**getmap(t_data *data, int fd, char **map, char *tmp);
-void		ft_kill(t_data *data, int code);
-void		cub_start(t_data *data);
-int		check_closed(t_data *data);
-int		checkwalls(t_data *data);
-int		checkcardinal(t_gfx *gfx, int fd);
-void		text_init(t_data *data);
-void		free_array(char **array);
-int		valid_map(t_data *data);
-int		on_window_close(t_data *data);
-int		key_listener(int keycode, t_data *data);
-void	map_height(char **map, int *height);
-void	free_textures(int i, t_data *data);
-void clear_db(t_data *data);
+void				free_str(char *str);
+int					init_map(t_data *data, char *str);
+int					on_window_close(t_data *data);
+void				display_init(t_data *data);
+void				free_map(char **map);
+void				free_db(char *str, char *str2);
+void				free_str(char *str);
+int					check_extension(char *fichier);
+int					check_player(t_data *data);
+char				**copy_map(char **map);
+char				**getmap(t_data *data, int fd, char **map, char *tmp);
+void				ft_kill(t_data *data, int code);
+void				cub_start(t_data *data);
+int					check_closed(t_data *data);
+int					checkwalls(t_data *data);
+int					checkcardinal(t_gfx *gfx, int fd);
+void				text_init(t_data *data);
+void				free_array(char **array);
+int					valid_map(t_data *data);
+int					on_window_close(t_data *data);
+int					key_listener(int keycode, t_data *data);
+void				map_height(char **map, int *height);
+void				free_textures(int i, t_data *data);
+void				clear_db(t_data *data);
 
+# endif
 #endif
