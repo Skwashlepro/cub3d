@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 16:26:06 by luctan            #+#    #+#             */
-/*   Updated: 2025/05/16 18:41:21 by lmokhtar         ###   ########.fr       */
+/*   Updated: 2025/06/14 01:31:59 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,3 +44,4 @@ char	*ft_strdup2(const char *str)
 	new[i] = '\0';
 	return (new);
 }
+

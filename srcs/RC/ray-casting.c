@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray-casting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 01:29:51 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/13 18:20:56 by lmokhtar         ###   ########.fr       */
+/*   Updated: 2025/06/14 00:29:11 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,13 +120,13 @@ void	wall_distance(t_data *data)
 		ray->draw_end = HEIGHT - 1;
 }
 
-void draw_walls(t_data *data)
-{
-	t_ray	*ray;
-	ray = &data->ray;
+// void draw_walls(t_data *data)
+// {
+// 	t_ray	*ray;
+// 	ray = &data->ray;
 
-	// dessiner les murs en fonction de la distance en utilisants les textures stockes dans nos structures
-}
+// 	// dessiner les murs en fonction de la distance en utilisants les textures stockes dans nos structures
+// }
 
 void	raycast(t_data *data)
 {

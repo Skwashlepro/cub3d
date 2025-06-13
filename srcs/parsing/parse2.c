@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 19:03:15 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/06/13 17:13:38 by lmokhtar         ###   ########.fr       */
+/*   Updated: 2025/06/14 01:34:21 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,13 +133,12 @@ static int	check_texture(char **split, char **wall_texture, int *count)
 	if (ft_strchr(split[1], '.') && ft_strcmp(ft_strrchr(split[1], '.'),
 			".xpm\n") == 0)
 	{
-		if(open(split[1], O_RDONLY) == -1)
-		{
-			printf("Error\n Texture file not found: %s\n", split[1]);
-			return (0);
-		}
-		*wall_texture = ft_strdup(split[1]);
-		free(wall_texture[0]);
+		// if (open(split[1], O_RDONLY) == -1)
+		// {
+		// 	printf("Error\n Texture file not found: %s\n", split[1]);
+		// 	return (0);
+		// }
+		*wall_texture = ft_strtrim(split[1], "\n");
 		(*count)++;
 		return (1);
 	}
@@ -148,10 +147,10 @@ static int	check_texture(char **split, char **wall_texture, int *count)
 
 static int	check_color(char **split, unsigned int *color, int *count)
 {
-	int	r;
-	int	g;
-	int	b;
-	char **tmp;
+	int		r;
+	int		g;
+	int		b;
+	char	**tmp;
 
 	tmp = ft_split(split[1], ',');
 	if (!tmp)
@@ -207,7 +206,7 @@ int	checkcardinal(t_gfx *gfx, int fd)
 	while (found_count < 6)
 	{
 		line = get_next_line(fd);
-		if(!line)
+		if (!line)
 			break ;
 		split = ft_split(line, ' ');
 		free_str(line);
