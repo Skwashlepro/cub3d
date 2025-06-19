@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 19:03:15 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/06/14 01:34:21 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/19 03:27:29 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,23 +55,23 @@ void	set_init_direction(t_data *data, char dir)
 	if (dir == 'N')
 	{
 		data->p1.dir_y = -1; // la direction =/ au pointage de la camera.
-		data->p1.plane_x = 0.66;
+		data->p1.plane_x = 0.9;
 		// la camera pointe toujours a la droite du perso N = Droite du perso
 	}
 	else if (dir == 'S')
 	{
 		data->p1.dir_y = 1;
-		data->p1.plane_x = -0.66;
+		data->p1.plane_x = -0.9;
 	}
 	else if (dir == 'W')
 	{
 		data->p1.dir_x = -1;
-		data->p1.plane_y = -0.66;
+		data->p1.plane_y = -0.9;
 	}
 	else if (dir == 'E')
 	{
 		data->p1.dir_x = 1;
-		data->p1.plane_y = 0.66;
+		data->p1.plane_y = 0.9;
 	}
 }
 

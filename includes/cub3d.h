@@ -13,8 +13,8 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# define WIDTH 800
-# define HEIGHT 600
+# define WIDTH 1280
+# define HEIGHT 720
 # define ESC_KEY 0xff1b
 # define W_KEY 0x77
 # define A_KEY 0x61
