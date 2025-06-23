@@ -20,6 +20,9 @@
 # define A_KEY 0x61
 # define S_KEY 0x73
 # define D_KEY 0x64
+# define LEFT_KEY 0xFF51
+# define RIGHT_KEY 0xFF53
+# define ROT_SPEED 0.08
 
 # include "get_next_line.h"
 # include "libft.h"
@@ -115,6 +118,7 @@ typedef struct s_data
 	bool			error;
 	char			*buffer;
 	char			*line;
+	int				ign_mouse;
 }					t_data;
 
 void				free_str(char *str);
@@ -142,6 +146,9 @@ void				map_height(char **map, int *height);
 void				free_textures(int i, t_data *data);
 void				clear_db(t_data *data);
 void				cub_init(t_data *data);
+void				rot_cam(t_data *data, double rot_speed);
+int					mouse_mov(int x, int y, t_data *data);
+
 
 // # endif
 #endif
