@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 14:52:49 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/23 17:26:31 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/23 17:28:12 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,24 +25,24 @@ void	rot_cam(t_data *data, double rot_speed)
 	data->p1.plane_y = old_plane_x * sin(rot_speed) + data->p1.plane_y * cos(rot_speed);
 }
 
-int	mouse_mov(int x, int y, t_data *data)
-{
-    static int ignore_next = 0;
-    int center_x = WIDTH / 2;
-    (void)y;
+// int	mouse_mov(int x, int y, t_data *data)
+// {
+//     static int ignore_next = 0;
+//     int center_x = WIDTH / 2;
+//     (void)y;
 
-    if (ignore_next)
-    {
-        ignore_next = 0;
-        return (0);
-    }
-    if (x != center_x)
-    {
-        double delta_x = x - center_x;
-        rot_cam(data, delta_x * 0.003); // Adjust sensitivity
-        mlx_mouse_move(data->display.mlx, data->display.mlx_win, center_x, HEIGHT / 2);
-        ignore_next = 1;
-    }
-    return (0);
-}
+//     if (ignore_next)
+//     {
+//         ignore_next = 0;
+//         return (0);
+//     }
+//     if (x != center_x)
+//     {
+//         double delta_x = x - center_x;
+//         rot_cam(data, delta_x * 0.003); // Adjust sensitivity
+//         mlx_mouse_move(data->display.mlx, data->display.mlx_win, center_x, HEIGHT / 2);
+//         ignore_next = 1;
+//     }
+//     return (0);
+// }
 
