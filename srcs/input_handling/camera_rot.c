@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 14:52:49 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/23 17:21:38 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/23 17:26:31 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,22 @@ void	rot_cam(t_data *data, double rot_speed)
 
 int	mouse_mov(int x, int y, t_data *data)
 {
-    double delta_x = x - (WIDTH / 2);
+    static int ignore_next = 0;
+    int center_x = WIDTH / 2;
+    (void)y;
 
-	(void)y; // Ignore y coordinate for rotation
-    if (delta_x != 0)
-        rot_cam(data, delta_x * 0.003);
-
-    // Only recenter if mouse is near the edge
-    if (x < WIDTH * 0.1 || x > WIDTH * 0.9)
-        mlx_mouse_move(data->display.mlx, data->display.mlx_win, WIDTH / 2, HEIGHT / 2);
-
+    if (ignore_next)
+    {
+        ignore_next = 0;
+        return (0);
+    }
+    if (x != center_x)
+    {
+        double delta_x = x - center_x;
+        rot_cam(data, delta_x * 0.003); // Adjust sensitivity
+        mlx_mouse_move(data->display.mlx, data->display.mlx_win, center_x, HEIGHT / 2);
+        ignore_next = 1;
+    }
     return (0);
 }
 
