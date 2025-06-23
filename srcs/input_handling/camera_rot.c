@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 14:52:49 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/23 16:02:40 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/23 17:07:56 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,20 @@ void	rot_cam(t_data *data, double rot_speed)
 
 int	mouse_mov(int x, int y, t_data *data)
 {
-    double delta_x;
+    static int	ignore_next = 0;
+    double		delta_x;
 
     (void)y;
-	if (data->ign_mouse)
-		return (data->ign_mouse = 0, 0);
+    if (ignore_next)
+    {
+        ignore_next = 0;
+        return (0);
+    }
     delta_x = x - (WIDTH / 2);
     if (delta_x != 0)
         rot_cam(data, delta_x * 0.003); // Adjust sensitivity as needed
     mlx_mouse_move(data->display.mlx, data->display.mlx_win, WIDTH / 2, HEIGHT / 2);
-	data->ign_mouse = 1;
+    ignore_next = 1;
     return (0);
 }
 
