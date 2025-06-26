@@ -121,6 +121,7 @@ typedef struct s_data
 	char			*buffer;
 	char			*line;
 	int				ign_mouse;
+	bool			redraw;
 }					t_data;
 
 void				free_str(char *str);

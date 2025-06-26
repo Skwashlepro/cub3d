@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 14:52:49 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/23 17:28:12 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/26 17:56:53 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	rot_cam(t_data *data, double rot_speed)
 //         mlx_mouse_move(data->display.mlx, data->display.mlx_win, center_x, HEIGHT / 2);
 //         ignore_next = 1;
 //     }
+// 	data->redraw = 1; // Trigger redraw after mouse movement
 //     return (0);
 // }
 

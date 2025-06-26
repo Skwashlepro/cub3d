@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 18:10:51 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/13 17:02:23 by lmokhtar         ###   ########.fr       */
+/*   Updated: 2025/06/26 17:51:30 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	init_data(t_data *data)
 	data->p1.dir_y = 0;
 	data->p1.plane_x = 0;
 	data->p1.plane_y = 0;
+	data->redraw = 1;
 }
 
 int	main(int ac, char **av, char *env[])

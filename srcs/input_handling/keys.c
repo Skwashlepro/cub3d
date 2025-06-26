@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 21:56:50 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/26 15:08:11 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/26 17:53:37 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ int	key_listener(int keycode, t_data *data)
 		rot_cam(data, ROT_SPEED);
 	else
 		movements(keycode, data);
+	data->redraw = 1;
 	return (0);
 }
