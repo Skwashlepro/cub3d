@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 21:55:38 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/26 16:58:32 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/26 17:13:41 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int	render_frame(t_data *data)
 
 	y = -1;
 	frame = &data->frame;
-	frame->img = mlx_new_image(data->display.mlx, WIDTH, HEIGHT);
 	frame->addr = mlx_get_data_addr(frame->img, &frame->bpp,
 			&frame->line_length, &frame->endian);
 	if (!frame->img || !frame->addr)
@@ -46,8 +45,7 @@ int	render_frame(t_data *data)
 	cub_init(data);
 	mlx_put_image_to_window(data->display.mlx, data->display.mlx_win,
 		frame->img, 0, 0);
-	mlx_destroy_image(data->display.mlx, frame->img);
-	// usleep(8000); // FPS LOCK
+	usleep(8000); // FPS LOCK
 	return (0);
 }
 
@@ -64,6 +62,7 @@ void	display_init(t_data *data)
 	mlx_hook(disp->mlx_win, 2, 1L << 0, &key_listener, data);
 	// mlx_hook(disp->mlx_win, 6, 1L << 6, mouse_mov, data);
 	cub3d(data);
+	data->frame.img = mlx_new_image(data->display.mlx, WIDTH, HEIGHT);
 	mlx_loop_hook(disp->mlx, render_frame, data);
 	mlx_hook(disp->mlx_win, 17, 0, on_window_close, data);
 	mlx_loop(disp->mlx);

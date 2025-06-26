@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 21:44:35 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/14 01:39:36 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/26 17:28:14 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,12 @@ void clear_db(t_data *data)
 
 	i = -1;
 	gfx = &data->gfx;
-	while (gfx->wall[++i])
+	if (data->frame.img)
+		mlx_destroy_image(data->display.mlx, data->frame.img); ;
+	while (gfx->wall[++i].img)
 	{
-		mlx_destroy_image(data->display.mlx, gfx->wall[i]);
-		gfx->wall[i] = NULL;
+		mlx_destroy_image(data->display.mlx, gfx->wall[i].img);
+		gfx->wall[i].img = NULL;
 	}
 	i = -1;
 	while (gfx->wall_path[++i])

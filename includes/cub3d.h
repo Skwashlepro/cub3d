@@ -71,6 +71,8 @@ typedef struct s_img
 {
 	void			*img;
 	char			*addr;
+	int				width;
+	int				height;
 	int				bpp;
 	int				line_length;
 	int				endian;
@@ -79,7 +81,7 @@ typedef struct s_img
 typedef struct s_gfx
 {
 	char			*wall_path[4];
-	void			*wall[4];
+	t_img			wall[4];
 	void			*viewmodel;
 	unsigned int	ceiling_color;
 	unsigned int	floor_color;
