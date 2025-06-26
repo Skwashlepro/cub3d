@@ -18,7 +18,7 @@ INC = -I/usr/include -Iincludes -Ilib/libft -Ilib/gnl
 
 SRC_FILES	= main \
     parse parse2 display_handling textures keys\
-	camera_rot \
+	camera_rot movements\
 	get_next_line get_next_line_utils\
     utils  exits\
 	ray-casting\
