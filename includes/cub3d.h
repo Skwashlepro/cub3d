@@ -148,7 +148,7 @@ void				clear_db(t_data *data);
 void				cub_init(t_data *data);
 void				rot_cam(t_data *data, double rot_speed);
 int					mouse_mov(int x, int y, t_data *data);
-void	movements(int keycode, t_data *data);
+void				movements(int keycode, t_data *data);
 
 // # endif
 #endif
