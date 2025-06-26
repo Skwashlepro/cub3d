@@ -128,23 +128,21 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 
 void	draw_walls(t_data *data, int x)
 {
-	t_ray	*ray;
-	t_img	*frame;
-	int		y;
-	int		color;
+	int	y;
+    int	tex_x;
+    int	tex_y;
+    int	tex_num;
+    int	color;
 
-	ray = &data->ray;
-	frame = &data->frame;
-	y = ray->draw_start;
-	while (y < ray->draw_end)
-	{
-		if (ray->side == 0)
-			color = (ray->step_x > 0) ? 0xFF0000 : 0x00FF00; // Red for vertical walls, Green for horizontal
-		else
-			color = (ray->step_y > 0) ? 0x0000FF : 0xFFFF00; // Blue for horizontal walls, Yellow for vertical
-		my_mlx_pixel_put(frame, x, y, color);
-		y++;
-	}
+    tex_num = get_wall_texture_num(data);
+    y = data->ray.draw_start;
+    while (y < data->ray.draw_end)
+    {
+        calculate_texture_coords(data, &tex_x, &tex_y, y);
+        color = get_texture_color(data, tex_num, tex_x, tex_y);
+        my_mlx_pixel_put(&data->frame, x, y, color);
+        y++;
+    }
 }
 
 void	raycast(t_data *data)
