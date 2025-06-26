@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 21:55:38 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/23 17:32:04 by luctan           ###   ########.fr       */
+/*   Updated: 2025/06/26 16:58:32 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	render_frame(t_data *data)
 	mlx_put_image_to_window(data->display.mlx, data->display.mlx_win,
 		frame->img, 0, 0);
 	mlx_destroy_image(data->display.mlx, frame->img);
-	usleep(8000); // FPS LOCK
+	// usleep(8000); // FPS LOCK
 	return (0);
 }
 
