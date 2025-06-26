@@ -149,6 +149,11 @@ void				cub_init(t_data *data);
 void				rot_cam(t_data *data, double rot_speed);
 int					mouse_mov(int x, int y, t_data *data);
 void	movements(int keycode, t_data *data);
+void				text_init(t_data *data);
+void				free_textures(int i, t_data *data);
+int					get_texture_color(t_data *data, int tex_num, int tex_x, int tex_y);
+void				calculate_texture_coords(t_data *data, int *tex_x, int *tex_y, int screen_y);
+int					get_wall_texture_num(t_data *data);
 
 // # endif
 #endif
