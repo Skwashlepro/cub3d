@@ -9,12 +9,12 @@ BOLD = \033[1m
 NAME 		= cub3d
 CC			= cc
 LIBFT		= lib/libft/libft.a
-#CFLAGS		= -Wall -Werror -Wextra
+# CFLAGS		= -Wall -Werror -Wextra
 CFLAGS		= -Wall -Werror -Wextra -g3
-MLX_PATH = ./mlx_linux
+MLX_PATH = ./lib/mlx_linux
 LIBFT_PATH = ./lib/libft
 VPATH		= ./srcs/:./srcs/RT:./srcs/parsing:./srcs/input_handling:./srcs/display:./srcs/utils:./lib/gnl:./srcs/RC
-INC = -I/usr/include -Iincludes -Ilib/libft -Ilib/gnl
+INC = -I/usr/include -Iincludes -Ilib/libft -Ilib/gnl -Ilib/mlx_linux
 
 SRC_FILES	= main \
     parse parse2 display_handling textures keys\
