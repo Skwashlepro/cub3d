@@ -22,7 +22,8 @@
 # define D_KEY 0x64
 # define LEFT_KEY 0xFF51
 # define RIGHT_KEY 0xFF53
-# define ROT_SPEED 0.08
+# define ROT_SPEED 0.02
+# define MOVE_SPEED 0.02
 
 # include "get_next_line.h"
 # include "libft.h"
@@ -33,6 +34,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <sys/time.h>
 
 # ifndef M_PI
 #  define M_PI 3.14159265358979323846
@@ -87,6 +89,16 @@ typedef struct s_gfx
 	unsigned int	floor_color;
 }					t_gfx;
 
+typedef struct s_keys
+{
+	int				left;
+	int				right;
+	int				up;
+	int				down;
+	int				turn_left;
+	int				turn_right;
+}					t_keys;
+
 typedef struct s_player
 {
 	double			pos_x;
@@ -111,6 +123,7 @@ typedef struct s_data
 	t_gfx			gfx;
 	t_img			frame;
 	t_ray			ray;
+	t_keys			keys;
 	char			**map;
 	int				fd;
 	int				map_height;
@@ -130,7 +143,6 @@ int					on_window_close(t_data *data);
 void				display_init(t_data *data);
 void				free_map(char **map);
 void				free_db(char *str, char *str2);
-void				free_str(char *str);
 int					check_extension(char *fichier);
 int					check_player(t_data *data);
 char				**copy_map(char **map);
@@ -154,9 +166,12 @@ int					mouse_mov(int x, int y, t_data *data);
 void				movements(int keycode, t_data *data);
 void				text_init(t_data *data);
 void				free_textures(int i, t_data *data);
-int					get_texture_color(t_data *data, int tex_num, int tex_x, int tex_y);
-void				calculate_texture_coords(t_data *data, int *tex_x, int *tex_y, int screen_y);
+int					get_texture_color(t_data *data, int tex_num, int tex_x,
+						int tex_y);
+void				calculate_texture_coords(t_data *data, int *tex_x,
+						int *tex_y, int screen_y);
 int					get_wall_texture_num(t_data *data);
+int					key_release(int keycode, t_data *data);
 
 // # endif
 #endif

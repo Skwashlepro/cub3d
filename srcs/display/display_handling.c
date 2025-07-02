@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 21:55:38 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/26 18:00:15 by luctan           ###   ########.fr       */
+/*   Updated: 2025/07/02 02:55:00 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,22 @@ int	render_frame(t_data *data)
 
 int	cub_loop(t_data *data)
 {
+	if (data->keys.turn_left || data->keys.turn_right)
+	{
+		if (data->keys.turn_left)
+			rot_cam(data, -ROT_SPEED);
+		if (data->keys.turn_right)
+			rot_cam(data, ROT_SPEED);
+		data->redraw = 1;
+	}
+	if (data->keys.up)
+		movements(W_KEY, data);
+	if (data->keys.down)
+		movements(S_KEY, data);
+	if (data->keys.left)
+		movements(A_KEY, data);
+	if (data->keys.right)
+		movements(D_KEY, data);
 	if (data->redraw)
 	{
 		data->redraw = 0;
@@ -68,7 +84,8 @@ void	display_init(t_data *data)
 	if (!data || !data->display.mlx || !data->display.mlx_win)
 		return ;
 	mlx_mouse_hide(disp->mlx, disp->mlx_win);
-	mlx_hook(disp->mlx_win, 2, 1L << 0, &key_listener, data);
+	mlx_hook(disp->mlx_win, 2, 1L << 0, key_listener, data);
+	mlx_hook(disp->mlx_win, 3, 1L << 1, key_release, data);
 	// mlx_hook(disp->mlx_win, 6, 1L << 6, mouse_mov, data);
 	cub3d(data);
 	frame->img = mlx_new_image(data->display.mlx, WIDTH, HEIGHT);
