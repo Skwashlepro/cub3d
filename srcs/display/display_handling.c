@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 21:55:38 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/26 16:58:32 by luctan           ###   ########.fr       */
+/*   Updated: 2025/07/02 03:00:39 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,6 @@ int	render_frame(t_data *data)
 
 	y = -1;
 	frame = &data->frame;
-	frame->img = mlx_new_image(data->display.mlx, WIDTH, HEIGHT);
-	frame->addr = mlx_get_data_addr(frame->img, &frame->bpp,
-			&frame->line_length, &frame->endian);
 	if (!frame->img || !frame->addr)
 		return (printf("Error: Failed to create image\n"), 0);
 	while (++y < HEIGHT)
@@ -46,25 +43,55 @@ int	render_frame(t_data *data)
 	cub_init(data);
 	mlx_put_image_to_window(data->display.mlx, data->display.mlx_win,
 		frame->img, 0, 0);
-	mlx_destroy_image(data->display.mlx, frame->img);
-	// usleep(8000); // FPS LOCK
+	return (0);
+}
+
+int	cub_loop(t_data *data)
+{
+	if (data->keys.turn_left || data->keys.turn_right)
+	{
+		if (data->keys.turn_left)
+			rot_cam(data, -ROT_SPEED);
+		if (data->keys.turn_right)
+			rot_cam(data, ROT_SPEED);
+		data->redraw = 1;
+	}
+	if (data->keys.up)
+		movements(W_KEY, data);
+	if (data->keys.down)
+		movements(S_KEY, data);
+	if (data->keys.left)
+		movements(A_KEY, data);
+	if (data->keys.right)
+		movements(D_KEY, data);
+	if (data->redraw)
+	{
+		data->redraw = 0;
+		render_frame(data);
+	}
 	return (0);
 }
 
 void	display_init(t_data *data)
 {
 	t_disp	*disp;
+	t_img	*frame;
 
+	frame = &data->frame;
 	disp = &(data->display);
 	disp->mlx = mlx_init();
 	disp->mlx_win = mlx_new_window(disp->mlx, WIDTH, HEIGHT, "Cub3D");
 	if (!data || !data->display.mlx || !data->display.mlx_win)
 		return ;
 	mlx_mouse_hide(disp->mlx, disp->mlx_win);
-	mlx_hook(disp->mlx_win, 2, 1L << 0, &key_listener, data);
-	// mlx_hook(disp->mlx_win, 6, 1L << 6, mouse_mov, data);
+	mlx_hook(disp->mlx_win, 2, 1L << 0, key_listener, data);
+	mlx_hook(disp->mlx_win, 3, 1L << 1, key_release, data);
+	mlx_hook(disp->mlx_win, 6, 1L << 6, mouse_mov, data);
 	cub3d(data);
-	mlx_loop_hook(disp->mlx, render_frame, data);
+	frame->img = mlx_new_image(data->display.mlx, WIDTH, HEIGHT);
+	frame->addr = mlx_get_data_addr(frame->img, &frame->bpp,
+			&frame->line_length, &frame->endian);
+	mlx_loop_hook(disp->mlx, cub_loop, data);
 	mlx_hook(disp->mlx_win, 17, 0, on_window_close, data);
 	mlx_loop(disp->mlx);
 	if (disp->mlx == 0)
