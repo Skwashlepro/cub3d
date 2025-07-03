@@ -24,6 +24,7 @@
 # define RIGHT_KEY 0xFF53
 # define ROT_SPEED 0.02
 # define MOVE_SPEED 0.02
+# define M_SENS 0.03
 
 # include "get_next_line.h"
 # include "libft.h"

@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 14:52:49 by luctan            #+#    #+#             */
-/*   Updated: 2025/07/02 03:01:16 by luctan           ###   ########.fr       */
+/*   Updated: 2025/07/03 20:40:18 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	mouse_mov(int x, int y, t_data *data)
     if (x != center_x)
     {
         double delta_x = x - center_x;
-        rot_cam(data, delta_x * 0.00003); // Adjust sensitivity
+        rot_cam(data, delta_x * M_SENS); // Adjust sensitivity
         mlx_mouse_move(data->display.mlx, data->display.mlx_win, center_x, HEIGHT / 2);
         ignore_next = 1;
     }
