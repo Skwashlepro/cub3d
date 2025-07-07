@@ -6,7 +6,7 @@
 /*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 19:03:15 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/07/07 17:59:06 by lmokhtar         ###   ########.fr       */
+/*   Updated: 2025/07/07 18:07:15 by lmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,7 +159,7 @@ static int	check_color(char **split, unsigned int *color, int *count)
 	tmp = ft_split(split[1], ',');
 	if (!tmp)
 		return (0);
-	if (tmp)
+	if (tmp && tmp[2] && !tmp[3])
 	{
 		r = ft_atoi(tmp[0]);
 		g = ft_atoi(tmp[1]);
