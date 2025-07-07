@@ -2,6 +2,7 @@ NO ./textures/ciel.xpm
 SO ./textures/ciel.xpm
 WE ./textures/ciel.xpm
 EA ./textures/ciel.xpm
+
 F abc,def,ghi
 C 255,0x00,0
 
