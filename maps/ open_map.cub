@@ -1,7 +1,7 @@
-NO /home/luctan/Documents/42/gitcub/textures/test.xpm
-SO /home/luctan/Documents/42/gitcub/textures/test.xpm
-WE /home/luctan/Documents/42/gitcub/textures/test.xpm
-EA /home/luctan/Documents/42/gitcub/textures/test.xpm
+NO textures/ciel.xpm
+SO textures/ciel.xpm
+WE textures/ciel.xpm
+EA textures/ciel.xpm
 F 255,0,0
 C 0,255,0
 
