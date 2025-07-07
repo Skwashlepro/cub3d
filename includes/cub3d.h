@@ -22,8 +22,9 @@
 # define D_KEY 0x64
 # define LEFT_KEY 0xFF51
 # define RIGHT_KEY 0xFF53
-# define ROT_SPEED 0.02
-# define MOVE_SPEED 0.02
+# define ROT_SPEED 0.008
+# define MOVE_SPEED 0.01
+# define MOUSE_SENS 0.001
 
 # include "get_next_line.h"
 # include "libft.h"
@@ -36,9 +37,6 @@
 # include <unistd.h>
 # include <sys/time.h>
 
-# ifndef M_PI
-#  define M_PI 3.14159265358979323846
-# endif
 
 typedef struct s_ray
 {

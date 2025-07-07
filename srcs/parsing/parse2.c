@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 19:03:15 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/06/19 03:27:29 by luctan           ###   ########.fr       */
+/*   Updated: 2025/07/07 18:03:48 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,7 +155,7 @@ static int	check_color(char **split, unsigned int *color, int *count)
 	tmp = ft_split(split[1], ',');
 	if (!tmp)
 		return (0);
-	if (tmp)
+	if (tmp && tmp[2] && !tmp[3])
 	{
 		r = ft_atoi(tmp[0]);
 		g = ft_atoi(tmp[1]);
