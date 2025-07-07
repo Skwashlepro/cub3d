@@ -1,10 +1,10 @@
 NO ./textures/ciel.xpm
 SO ./textures/ciel.xpm
-WE ./textures/c
+WE ./textures/ciel.xpm
 EA ./textures/ciel.xpm
 
 F 20,20,20
-C 200,200,200
+C 200,200,
 
 11111
 10001
