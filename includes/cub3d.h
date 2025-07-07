@@ -34,9 +34,8 @@
 # include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <unistd.h>
 # include <sys/time.h>
-
+# include <unistd.h>
 
 typedef struct s_ray
 {
@@ -170,6 +169,7 @@ void				calculate_texture_coords(t_data *data, int *tex_x,
 						int *tex_y, int screen_y);
 int					get_wall_texture_num(t_data *data);
 int					key_release(int keycode, t_data *data);
+char				**check_rgb(char *split);
 
 // # endif
 #endif
