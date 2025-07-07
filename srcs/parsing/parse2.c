@@ -6,7 +6,7 @@
 /*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 19:03:15 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/07/07 18:35:51 by lmokhtar         ###   ########.fr       */
+/*   Updated: 2025/07/07 19:12:53 by lmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ int	init_map(t_data *data, char *str)
 	if (checkcardinal(&data->gfx, data->fd) != 6)
 		return (printf("Error\n Invalid textures path \n"), 0);
 	data->map = getmap(data, data->fd, data->map, tmp);
+	if (!data->map)
+	{
+		close(data->fd);
+		return(0);
+	}
 	if (!valid_map(data))
 	{
 		free_array(data->map);
