@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 19:03:15 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/07/07 19:12:53 by lmokhtar         ###   ########.fr       */
+/*   Updated: 2025/07/07 19:38:24 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,12 +142,12 @@ static int	check_texture(char **split, char **wall_texture, int *count)
 	if (ft_strchr(split[1], '.') && ft_strcmp(ft_strrchr(split[1], '.'),
 			".xpm\n") == 0)
 	{
-		// if (open(split[1], O_RDONLY) == -1)
-		// {
-		// 	printf("Error\n Texture file not found: %s\n", split[1]);
-		// 	return (0);
-		// }
 		*wall_texture = ft_strtrim(split[1], "\n");
+		if (access(*wall_texture, F_OK) == -1)
+		{
+			printf("Error\n Texture file %s not found\n", split[1]);
+			return (0);
+		}
 		(*count)++;
 		return (1);
 	}
