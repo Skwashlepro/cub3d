@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 21:44:35 by luctan            #+#    #+#             */
-/*   Updated: 2025/07/08 18:09:22 by luctan           ###   ########.fr       */
+/*   Updated: 2025/07/08 21:06:32 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	free_array(char **array)
 {
 	int	i;
 
-	if (!array)
+	if (!array || !*array)
 		return ;
 	i = 0;
 	while (array[i])
@@ -68,8 +68,11 @@ void	clear_db(t_data *data)
 		gfx->wall[i].img = NULL;
 	}
 	i = -1;
-	while (gfx->wall_path[++i])
-		free_str(gfx->wall_path[i]);
+	while (++i < 4)
+	{
+		if (gfx->wall_path[i])
+			free_str(gfx->wall_path[i]);
+	}
 	if (data->line)
 		free_str(data->line);
 	if (data->map)

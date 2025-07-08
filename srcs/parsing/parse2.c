@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 19:03:15 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/07/08 20:48:26 by luctan           ###   ########.fr       */
+/*   Updated: 2025/07/08 21:16:08 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	init_map(t_data *data, char *str)
 	if (data->fd == -1)
 		return (printf("Error\nFile not found\n"), 2);
 	if (checkcardinal(&data->gfx, data->fd) != 6)
-		return (printf("Error\n Invalid map parameters\n"), 0);
+		return (close(data->fd), printf("Error\n Invalid map parameters\n"), 0);
 	data->map = getmap(data, data->fd, data->map, tmp);
 	if (!data->map)
 		return (close(data->fd), 0);
@@ -72,7 +72,7 @@ int	check_texture(char **split, char **wall_texture, int *count)
 	if (ft_strchr(split[1], '.') && ft_strcmp(ft_strrchr(split[1], '.'),
 			".xpm\n") == 0)
 	{
-		*wall_texture = ft_strtrim(split[1], "\n");
+		*wall_texture = ft_strtrim(split[1], " \n");
 		if (access(*wall_texture, F_OK) == -1)
 		{
 			printf("Error\n Texture file %s not found\n", split[1]);

@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 20:31:57 by luctan            #+#    #+#             */
-/*   Updated: 2025/07/08 20:22:59 by luctan           ###   ########.fr       */
+/*   Updated: 2025/07/08 21:30:12 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,19 @@ int	valid_map(t_data *data)
 	return (1);
 }
 
+int	check_comma(char *str)
+{
+	int	i;
+	int	comma_count;
+
+	i = -1;
+	comma_count = 0;
+	while (str[++i])
+		if (str[i] == ',')
+			comma_count++;
+	return (comma_count);
+}
+
 char	**check_rgb(char *split)
 {
 	char	**tmp;
@@ -31,9 +44,12 @@ char	**check_rgb(char *split)
 	int		j;
 
 	i = -1;
+	if (check_comma(split) != 2)
+		return (printf("Error\n Invalid RGB format\n"), NULL);
 	tmp = ft_split(split, ',');
-	if (!tmp[2])
-		return (free_array(tmp), NULL);
+	while (tmp[++i])
+		if (i > 2)
+			return (free_array(tmp), NULL);
 	trim = ft_strtrim(tmp[2], "\n");
 	free_str(tmp[2]);
 	tmp[2] = ft_strdup(trim);
@@ -44,6 +60,7 @@ char	**check_rgb(char *split)
 		while (tmp[i][++j])
 			if ((tmp[i][j] < '0' || tmp[i][j] > '9'))
 				return (free_array(tmp), NULL);
+		printf("tmp[%d] = %s\n", i, tmp[i]);
 	}
 	return (tmp);
 }
