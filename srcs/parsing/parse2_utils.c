@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse2_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 18:07:45 by luctan            #+#    #+#             */
-/*   Updated: 2025/07/08 20:30:00 by lmokhtar         ###   ########.fr       */
+/*   Updated: 2025/07/08 20:43:55 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	checkcardinal(t_gfx *gfx, int fd)
 		free_str(line);
 		if (!split)
 			continue ;
-		if (process_cardinal(split, gfx, &found_count))
+		if (!process_cardinal(split, gfx, &found_count))
 		{
 			found_count = -1;
 			get_next_line(fd, 1);

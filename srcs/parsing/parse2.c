@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 19:03:15 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/07/08 20:30:09 by lmokhtar         ###   ########.fr       */
+/*   Updated: 2025/07/08 20:48:26 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	init_map(t_data *data, char *str)
 	if (data->fd == -1)
 		return (printf("Error\nFile not found\n"), 2);
 	if (checkcardinal(&data->gfx, data->fd) != 6)
-		return (printf("Error\n Invalid textures path \n"), 0);
+		return (printf("Error\n Invalid map parameters\n"), 0);
 	data->map = getmap(data, data->fd, data->map, tmp);
 	if (!data->map)
 		return (close(data->fd), 0);
@@ -76,7 +76,7 @@ int	check_texture(char **split, char **wall_texture, int *count)
 		if (access(*wall_texture, F_OK) == -1)
 		{
 			printf("Error\n Texture file %s not found\n", split[1]);
-			return (0);
+			return (1);
 		}
 		(*count)++;
 		return (1);
