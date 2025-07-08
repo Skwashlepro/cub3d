@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 14:09:10 by luctan            #+#    #+#             */
-/*   Updated: 2025/07/07 20:27:01 by luctan           ###   ########.fr       */
+/*   Updated: 2025/07/08 18:29:53 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_atoi(const char *nptr)
 		return (-1);
 	while (nptr[i] && nptr[i] >= '0' && nptr[i] <= '9')
 		r = r * 10 + nptr[i++] - 48;
-	if (nptr[i] && (nptr[i]< '0' || nptr[i] > '9'))
+	if (nptr[i] && (nptr[i] < '0' || nptr[i] > '9'))
 		return (-1);
 	return (r * sign);
 }

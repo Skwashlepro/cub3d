@@ -22,9 +22,9 @@
 # define D_KEY 0x64
 # define LEFT_KEY 0xFF51
 # define RIGHT_KEY 0xFF53
-# define ROT_SPEED 0.008
+# define ROT_SPEED 0.01
 # define MOVE_SPEED 0.01
-# define MOUSE_SENS 0.001
+# define MOUSE_SENS 0.0005
 
 # include "get_next_line.h"
 # include "libft.h"
@@ -175,6 +175,8 @@ int					check_texture(char **split, char **wall_texture,
 						int *count);
 int					check_color(char **split, unsigned int *color, int *count);
 void				init_raycasting(t_data *data);
-void	draw_walls(t_data *data, int x);
+void				draw_walls(t_data *data, int x);
+int					checkcardinal(t_gfx *gfx, int fd);
+
 // # endif
 #endif

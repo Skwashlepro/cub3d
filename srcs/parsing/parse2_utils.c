@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 18:07:45 by luctan            #+#    #+#             */
-/*   Updated: 2025/07/08 18:12:55 by luctan           ###   ########.fr       */
+/*   Updated: 2025/07/08 18:27:51 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,26 @@ void	set_init_direction(t_data *data, char dir)
 		data->p1.dir_x = 1;
 		data->p1.plane_y = 0.9;
 	}
+}
+
+int	checkcardinal(t_gfx *gfx, int fd)
+{
+	char	*line;
+	char	**split;
+	int		found_count;
+
+	found_count = 0;
+	while (found_count < 6)
+	{
+		line = get_next_line(fd);
+		if (!line)
+			break ;
+		split = ft_split(line, ' ');
+		free_str(line);
+		if (!split)
+			continue ;
+		process_cardinal(split, gfx, &found_count);
+		free_array(split);
+	}
+	return (found_count);
 }
