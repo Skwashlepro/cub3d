@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse2_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 18:07:45 by luctan            #+#    #+#             */
-/*   Updated: 2025/07/08 18:27:51 by luctan           ###   ########.fr       */
+/*   Updated: 2025/07/08 19:20:35 by lmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,3 +61,4 @@ int	checkcardinal(t_gfx *gfx, int fd)
 	}
 	return (found_count);
 }
+
