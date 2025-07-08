@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera_rot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 14:52:49 by luctan            #+#    #+#             */
-/*   Updated: 2025/07/07 17:56:08 by luctan           ###   ########.fr       */
+/*   Updated: 2025/07/08 18:40:54 by lmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	mouse_mov(int x, int y, t_data *data)
 	if (x != center_x)
 	{
 		delta_x = x - center_x;
-		rot_cam(data, delta_x * MOUSE_SENS); // Adjust sensitivity
+		rot_cam(data, delta_x * M_SENS); // Adjust sensitivity
 		mlx_mouse_move(data->display.mlx, data->display.mlx_win, center_x,
 			HEIGHT / 2);
 		ignore_next = 1;

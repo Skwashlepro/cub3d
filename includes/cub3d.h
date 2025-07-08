@@ -22,9 +22,9 @@
 # define D_KEY 0x64
 # define LEFT_KEY 0xFF51
 # define RIGHT_KEY 0xFF53
-# define ROT_SPEED 0.008
-# define MOVE_SPEED 0.01
-# define MOUSE_SENS 0.001
+# define ROT_SPEED 0.02
+# define MOVE_SPEED 0.02
+# define M_SENS 0.03
 
 # include "get_next_line.h"
 # include "libft.h"
