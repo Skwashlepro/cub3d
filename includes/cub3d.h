@@ -177,6 +177,7 @@ int					check_color(char **split, unsigned int *color, int *count);
 void				init_raycasting(t_data *data);
 void				draw_walls(t_data *data, int x);
 int					checkcardinal(t_gfx *gfx, int fd);
+int					is_valid_char(char c);
 
 // # endif
 #endif

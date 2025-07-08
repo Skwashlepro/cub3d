@@ -6,18 +6,20 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 16:37:34 by luctan            #+#    #+#             */
-/*   Updated: 2024/01/31 16:34:07 by luctan           ###   ########.fr       */
+/*   Updated: 2025/07/08 20:18:50 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*get_next_line(int fd)
+char	*get_next_line(int fd, int to_free)
 {
 	static t_list	*stsh;
 	char			*l;
 	int				i;
 
+	if (to_free == 1)
+		return (free_stsh(stsh), NULL);
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	i = 1;
@@ -132,7 +134,8 @@ void	clear_stsh(t_list **stsh)
 		i++;
 	if (lst->content && lst->content[i] == '\n')
 		i++;
-	clean->content = malloc(sizeof(char) * (ft_strlen(lst->content) - i) + 1);
+	clean->content = malloc(sizeof(char)
+			* ((int)ft_strlen(lst->content) - i) + 1);
 	if (clean->content == NULL)
 		return ;
 	j = 0;

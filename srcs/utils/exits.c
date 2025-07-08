@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 02:52:45 by luctan            #+#    #+#             */
-/*   Updated: 2025/07/08 18:09:10 by luctan           ###   ########.fr       */
+/*   Updated: 2025/07/08 20:03:55 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	ft_kill(t_data *data, int code)
 {
-	clear_db(data);
+	if (data)
+		clear_db(data);
 	if (data->display.mlx_win && data->display.mlx)
 	{
 		mlx_destroy_window(data->display.mlx, data->display.mlx_win);

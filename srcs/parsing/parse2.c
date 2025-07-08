@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 19:03:15 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/07/08 19:54:28 by luctan           ###   ########.fr       */
+/*   Updated: 2025/07/08 20:23:56 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,6 @@ int	init_map(t_data *data, char *str)
 		return (close(data->fd), 0);
 	close(data->fd);
 	return (1);
-}
-
-static int	is_valid_char(char c)
-{
-	return (c == '0' || c == '1' || c == 'N' || c == 'S' || c == 'E' || c == 'W'
-		|| c == ' ');
 }
 
 int	check_player(t_data *data)
@@ -95,6 +89,31 @@ int	check_texture(char **split, char **wall_texture, int *count)
 		(*count)++;
 		return (1);
 	}
+	return (0);
+}
+
+int	process_cardinal(char **split, t_gfx *gfx, int *found_count)
+{
+	if (!split[0] || !split[1])
+		return (1);
+	if (!ft_strncmp(split[0], "NO", 3) && check_texture(split,
+			&gfx->wall_path[0], found_count))
+		return (1);
+	if (!ft_strncmp(split[0], "SO", 3) && check_texture(split,
+			&gfx->wall_path[1], found_count))
+		return (1);
+	if (!ft_strncmp(split[0], "WE", 3) && check_texture(split,
+			&gfx->wall_path[2], found_count))
+		return (1);
+	if (!ft_strncmp(split[0], "EA", 3) && check_texture(split,
+			&gfx->wall_path[3], found_count))
+		return (1);
+	if (!ft_strncmp(split[0], "C", 2) && check_color(split, &gfx->ceiling_color,
+			found_count))
+		return (1);
+	if (!ft_strncmp(split[0], "F", 2) && check_color(split, &gfx->floor_color,
+			found_count))
+		return (1);
 	return (0);
 }
 

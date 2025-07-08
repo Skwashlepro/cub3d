@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse2_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 18:07:45 by luctan            #+#    #+#             */
-/*   Updated: 2025/07/08 19:20:35 by lmokhtar         ###   ########.fr       */
+/*   Updated: 2025/07/08 20:24:05 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,27 @@ int	checkcardinal(t_gfx *gfx, int fd)
 	found_count = 0;
 	while (found_count < 6)
 	{
-		line = get_next_line(fd);
+		line = get_next_line(fd, 0);
 		if (!line)
 			break ;
 		split = ft_split(line, ' ');
 		free_str(line);
 		if (!split)
 			continue ;
-		process_cardinal(split, gfx, &found_count);
+		if (process_cardinal(split, gfx, &found_count))
+		{
+			found_count = -1;
+			get_next_line(fd, 1);
+			free_array(split);
+			break ;
+		}
 		free_array(split);
 	}
 	return (found_count);
 }
 
+int	is_valid_char(char c)
+{
+	return (c == '0' || c == '1' || c == 'N' || c == 'S' || c == 'E' || c == 'W'
+		|| c == ' ');
+}
