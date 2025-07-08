@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:53:24 by luctan            #+#    #+#             */
-/*   Updated: 2025/07/08 17:53:36 by luctan           ###   ########.fr       */
+/*   Updated: 2025/07/09 01:07:08 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,5 @@ void	free_textures(int i, t_data *data)
 			mlx_destroy_image(data->display.mlx, data->gfx.wall[j].img);
 		j++;
 	}
-	if (data->gfx.viewmodel)
-		mlx_destroy_image(data->display.mlx, data->gfx.viewmodel);
 	ft_kill(data, 1);
 }

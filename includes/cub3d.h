@@ -81,7 +81,6 @@ typedef struct s_gfx
 {
 	char			*wall_path[4];
 	t_img			wall[4];
-	void			*viewmodel;
 	unsigned int	ceiling_color;
 	unsigned int	floor_color;
 }					t_gfx;
