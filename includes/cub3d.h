@@ -171,5 +171,10 @@ int					process_cardinal(char **split, t_gfx *gfx,
 						int *found_count);
 void				set_init_direction(t_data *data, char dir);
 void				dda(t_data *data);
+int					check_texture(char **split, char **wall_texture,
+						int *count);
+int					check_color(char **split, unsigned int *color, int *count);
+void				init_raycasting(t_data *data);
+void	draw_walls(t_data *data, int x);
 // # endif
 #endif

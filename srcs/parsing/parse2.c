@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 19:03:15 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/07/08 18:22:47 by luctan           ###   ########.fr       */
+/*   Updated: 2025/07/08 18:25:11 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	check_player(t_data *data)
 	return (found_player);
 }
 
-static int	check_texture(char **split, char **wall_texture, int *count)
+int	check_texture(char **split, char **wall_texture, int *count)
 {
 	if (ft_strchr(split[1], '.') && ft_strcmp(ft_strrchr(split[1], '.'),
 			".xpm\n") == 0)
@@ -93,7 +93,7 @@ static int	check_texture(char **split, char **wall_texture, int *count)
 	return (0);
 }
 
-static int	check_color(char **split, unsigned int *color, int *count)
+int	check_color(char **split, unsigned int *color, int *count)
 {
 	int		r;
 	int		g;
