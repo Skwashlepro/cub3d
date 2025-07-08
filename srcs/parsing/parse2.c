@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 19:03:15 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/07/08 18:25:11 by luctan           ###   ########.fr       */
+/*   Updated: 2025/07/08 19:54:28 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,11 @@ int	check_player(t_data *data)
 
 int	check_texture(char **split, char **wall_texture, int *count)
 {
+	if (*wall_texture)
+	{
+		printf("Error\n Duplicate texture definition for %s\n", split[0]);
+		return (0);
+	}
 	if (ft_strchr(split[1], '.') && ft_strcmp(ft_strrchr(split[1], '.'),
 			".xpm\n") == 0)
 	{
