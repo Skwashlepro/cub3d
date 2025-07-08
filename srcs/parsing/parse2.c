@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 19:03:15 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/07/08 20:23:56 by luctan           ###   ########.fr       */
+/*   Updated: 2025/07/08 20:30:09 by lmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,7 @@ int	check_player(t_data *data)
 		{
 			if (data->map[i][j] == 'N' || data->map[i][j] == 'S'
 				|| data->map[i][j] == 'E' || data->map[i][j] == 'W')
-			{
-				if (found_player)
-					return (0);
-				data->p1.pos_x = j + 0.5;
-				data->p1.pos_y = i + 0.5;
-				set_init_direction(data, data->map[i][j]);
-				data->map[i][j] = '0';
-				found_player = 1;
-			}
+				is_player(data, i, j, &found_player);
 			else if (!is_valid_char(data->map[i][j]))
 				return (0);
 		}

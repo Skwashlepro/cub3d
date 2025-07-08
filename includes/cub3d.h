@@ -150,6 +150,7 @@ int					checkwalls(t_data *data);
 int					checkcardinal(t_gfx *gfx, int fd);
 void				free_array(char **array);
 int					valid_map(t_data *data);
+void				is_player(t_data *data, int i, int j, int *found_player);
 int					on_window_close(t_data *data);
 int					key_listener(int keycode, t_data *data);
 void				map_height(char **map, int *height);

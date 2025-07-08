@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse2_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 18:07:45 by luctan            #+#    #+#             */
-/*   Updated: 2025/07/08 20:24:05 by luctan           ###   ########.fr       */
+/*   Updated: 2025/07/08 20:30:00 by lmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,15 @@ int	is_valid_char(char c)
 {
 	return (c == '0' || c == '1' || c == 'N' || c == 'S' || c == 'E' || c == 'W'
 		|| c == ' ');
+}
+
+void	is_player(t_data *data, int i, int j, int *found_player)
+{
+	if (*found_player)
+		return ;
+	data->p1.pos_x = j + 0.5;
+	data->p1.pos_y = i + 0.5;
+	set_init_direction(data, data->map[i][j]);
+	data->map[i][j] = '0';
+	*found_player = 1;
 }
