@@ -1,0 +1,115 @@
+{
+   MLX_X11_still_reachable_realloc
+   Memcheck:Leak
+   fun:realloc
+   obj:/usr/lib/x86_64-linux-gnu/libX11.so.*
+}
+{
+   MLX_X11_strdup_any
+   Memcheck:Leak
+   fun:malloc
+   fun:strdup
+   obj:/usr/lib/x86_64-linux-gnu/libX11.so.*
+}
+{
+   MLX_X11_still_reachable
+   Memcheck:Leak
+   fun:malloc
+   obj:/usr/lib/x86_64-linux-gnu/libX11.so.*
+}
+{
+   MLX_X11_still_reachable_strdup
+   Memcheck:Leak
+   fun:strdup
+   obj:/usr/lib/x86_64-linux-gnu/libX11.so.*
+}
+{
+   MLX_X11_still_reachable_calloc
+   Memcheck:Leak
+   fun:calloc
+   obj:/usr/lib/x86_64-linux-gnu/libX11.so.*
+}
+{
+   MLX_XEXT_still_reachable
+   Memcheck:Leak
+   obj:/usr/lib/x86_64-linux-gnu/libXext.so.*
+}
+{
+   MLX_XCURSOR_still_reachable
+   Memcheck:Leak
+   obj:/usr/lib/x86_64-linux-gnu/libXcursor.so.*
+}
+{
+   MLX_MLX_still_reachable
+   Memcheck:Leak
+   obj:*mlx*
+}
+{
+   MLX_X11_strdup_full
+   Memcheck:Leak
+   fun:malloc
+   fun:strdup
+   fun:_XlcCreateLC
+   fun:_XlcDefaultLoader
+   fun:_XOpenLC
+   fun:_XrmInitParseInfo
+   fun:XrmGetStringDatabase
+   obj:/usr/lib/x86_64-linux-gnu/libX11.so.*
+}
+{
+   MLX_X11_strdup_locale
+   Memcheck:Leak
+   fun:malloc
+   fun:strdup
+   fun:_XlcResolveLocaleName
+   fun:_XlcCreateLC
+   fun:_XlcDefaultLoader
+   fun:_XOpenLC
+   fun:_XrmInitParseInfo
+   fun:XrmGetStringDatabase
+   obj:/usr/lib/x86_64-linux-gnu/libX11.so.*
+}
+{
+   MLX_X11_strdup_short
+   Memcheck:Leak
+   fun:malloc
+   fun:strdup
+   fun:_XlcCreateLC
+   fun:_XlcDefaultLoader
+   fun:_XOpenLC
+   fun:_XrmInitParseInfo
+   fun:XrmGetStringDatabase
+   obj:/usr/lib/x86_64-linux-gnu/libX11.so.*
+}
+{
+   system_dl_malloc
+   Memcheck:Leak
+   fun:malloc
+   obj:*/ld-*.so*
+}
+{
+   system_dl_strdup
+   Memcheck:Leak
+   fun:strdup
+   obj:*/ld-*.so*
+}
+{
+   system_dl_calloc
+   Memcheck:Leak
+   fun:calloc
+   obj:*/ld-*.so*
+}
+{
+   system_dl_malloc_rtld
+   Memcheck:Leak
+   fun:malloc
+   obj:*/libc.so*
+   obj:*/ld-*.so*
+}
+{
+   system_dl_calloc_rtld
+   Memcheck:Leak
+   fun:calloc
+   obj:*/libc.so*
+   obj:*/ld-*.so*
+}

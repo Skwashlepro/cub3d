@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 21:44:35 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/26 17:28:14 by luctan           ###   ########.fr       */
+/*   Updated: 2025/07/08 18:09:22 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	check_extension(char *fichier)
 	return (0);
 }
 
-void free_array(char **array)
+void	free_array(char **array)
 {
 	int	i;
 
@@ -53,15 +53,15 @@ void free_array(char **array)
 	free(array);
 }
 
-void clear_db(t_data *data)
+void	clear_db(t_data *data)
 {
 	t_gfx	*gfx;
-	int	i;
+	int		i;
 
 	i = -1;
 	gfx = &data->gfx;
 	if (data->frame.img)
-		mlx_destroy_image(data->display.mlx, data->frame.img); ;
+		mlx_destroy_image(data->display.mlx, data->frame.img);
 	while (gfx->wall[++i].img)
 	{
 		mlx_destroy_image(data->display.mlx, gfx->wall[i].img);

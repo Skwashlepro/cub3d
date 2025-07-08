@@ -17,11 +17,13 @@ VPATH		= ./srcs/:./srcs/RT:./srcs/parsing:./srcs/input_handling:./srcs/display:.
 INC = -I/usr/include -Iincludes -Ilib/libft -Ilib/gnl -Ilib/mlx_linux
 
 SRC_FILES	= main \
-    parse parse2 display_handling textures keys\
+    parse parse2 parse_utils parse2_utils\
+	display_handling textures text_utils\
+	keys\
 	camera_rot movements\
 	get_next_line get_next_line_utils\
     utils  exits\
-	ray-casting\
+	ray_casting ray_functions\
 
 OBJ_DIR = obj
 OBJ	= $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(SRC_FILES)))

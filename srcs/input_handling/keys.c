@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 21:56:50 by luctan            #+#    #+#             */
-/*   Updated: 2025/07/02 02:31:32 by luctan           ###   ########.fr       */
+/*   Updated: 2025/07/08 17:42:31 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	key_listener(int keycode, t_data *data)
 	data->redraw = 1;
 	return (0);
 }
+
 int	key_release(int keycode, t_data *data)
 {
 	t_keys	*keys;
@@ -56,4 +57,3 @@ int	key_release(int keycode, t_data *data)
 	data->redraw = 1;
 	return (0);
 }
-

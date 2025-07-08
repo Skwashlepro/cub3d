@@ -22,9 +22,9 @@
 # define D_KEY 0x64
 # define LEFT_KEY 0xFF51
 # define RIGHT_KEY 0xFF53
-# define ROT_SPEED 0.02
-# define MOVE_SPEED 0.02
-# define M_SENS 0.03
+# define ROT_SPEED 0.01
+# define MOVE_SPEED 0.01
+# define MOUSE_SENS 0.0005
 
 # include "get_next_line.h"
 # include "libft.h"
@@ -34,12 +34,8 @@
 # include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <unistd.h>
 # include <sys/time.h>
-
-# ifndef M_PI
-#  define M_PI 3.14159265358979323846
-# endif
+# include <unistd.h>
 
 typedef struct s_ray
 {
@@ -140,7 +136,6 @@ typedef struct s_data
 
 void				free_str(char *str);
 int					init_map(t_data *data, char *str);
-int					on_window_close(t_data *data);
 void				display_init(t_data *data);
 void				free_map(char **map);
 void				free_db(char *str, char *str2);
@@ -153,7 +148,6 @@ void				cub_start(t_data *data);
 int					check_closed(t_data *data);
 int					checkwalls(t_data *data);
 int					checkcardinal(t_gfx *gfx, int fd);
-void				text_init(t_data *data);
 void				free_array(char **array);
 int					valid_map(t_data *data);
 int					on_window_close(t_data *data);
@@ -166,13 +160,23 @@ void				rot_cam(t_data *data, double rot_speed);
 int					mouse_mov(int x, int y, t_data *data);
 void				movements(int keycode, t_data *data);
 void				text_init(t_data *data);
-void				free_textures(int i, t_data *data);
 int					get_texture_color(t_data *data, int tex_num, int tex_x,
 						int tex_y);
 void				calculate_texture_coords(t_data *data, int *tex_x,
 						int *tex_y, int screen_y);
 int					get_wall_texture_num(t_data *data);
 int					key_release(int keycode, t_data *data);
+char				**check_rgb(char *split);
+int					process_cardinal(char **split, t_gfx *gfx,
+						int *found_count);
+void				set_init_direction(t_data *data, char dir);
+void				dda(t_data *data);
+int					check_texture(char **split, char **wall_texture,
+						int *count);
+int					check_color(char **split, unsigned int *color, int *count);
+void				init_raycasting(t_data *data);
+void				draw_walls(t_data *data, int x);
+int					checkcardinal(t_gfx *gfx, int fd);
 
 // # endif
 #endif

@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 21:55:38 by luctan            #+#    #+#             */
-/*   Updated: 2025/07/02 03:00:39 by luctan           ###   ########.fr       */
+/*   Updated: 2025/07/08 17:52:13 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,33 +17,33 @@ void	cub3d(t_data *data)
 	text_init(data);
 }
 
-int	render_frame(t_data *data)
+void	render_frame(t_data *data)
 {
-	t_img			*frame;
 	int				x;
 	int				y;
 	unsigned int	color;
 	char			*dst;
 
 	y = -1;
-	frame = &data->frame;
-	if (!frame->img || !frame->addr)
-		return (printf("Error: Failed to create image\n"), 0);
+	if (!data->frame.img || !data->frame.addr)
+		return ((void)printf("Error: Failed to create image\n"));
 	while (++y < HEIGHT)
 	{
 		x = -1;
-		color = (y < HEIGHT
-				/ 2) ? data->gfx.ceiling_color : data->gfx.floor_color;
+		if (y < HEIGHT / 2)
+			color = data->gfx.ceiling_color;
+		else
+			color = data->gfx.floor_color;
 		while (++x < WIDTH)
 		{
-			dst = frame->addr + (y * frame->line_length + x * (frame->bpp / 8));
+			dst = data->frame.addr + (y * data->frame.line_length + x
+					* (data->frame.bpp / 8));
 			*(unsigned int *)dst = color;
 		}
 	}
 	cub_init(data);
 	mlx_put_image_to_window(data->display.mlx, data->display.mlx_win,
-		frame->img, 0, 0);
-	return (0);
+		data->frame.img, 0, 0);
 }
 
 int	cub_loop(t_data *data)

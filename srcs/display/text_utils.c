@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exits.c                                            :+:      :+:    :+:   */
+/*   text_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/22 02:52:45 by luctan            #+#    #+#             */
-/*   Updated: 2025/07/08 18:09:10 by luctan           ###   ########.fr       */
+/*   Created: 2025/07/08 17:53:24 by luctan            #+#    #+#             */
+/*   Updated: 2025/07/08 17:53:36 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	ft_kill(t_data *data, int code)
+void	free_textures(int i, t_data *data)
 {
-	clear_db(data);
-	if (data->display.mlx_win && data->display.mlx)
-	{
-		mlx_destroy_window(data->display.mlx, data->display.mlx_win);
-		mlx_destroy_display(data->display.mlx);
-		free(data->display.mlx);
-	}
-	exit(code);
-}
+	int	j;
 
-int	on_window_close(t_data *data)
-{
-	ft_kill(data, 0);
-	exit(0);
+	j = 0;
+	while (j < i)
+	{
+		if (data->gfx.wall[j].img)
+			mlx_destroy_image(data->display.mlx, data->gfx.wall[j].img);
+		j++;
+	}
+	if (data->gfx.viewmodel)
+		mlx_destroy_image(data->display.mlx, data->gfx.viewmodel);
+	ft_kill(data, 1);
 }
