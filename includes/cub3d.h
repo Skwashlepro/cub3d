@@ -136,7 +136,6 @@ typedef struct s_data
 
 void				free_str(char *str);
 int					init_map(t_data *data, char *str);
-int					on_window_close(t_data *data);
 void				display_init(t_data *data);
 void				free_map(char **map);
 void				free_db(char *str, char *str2);
@@ -149,7 +148,6 @@ void				cub_start(t_data *data);
 int					check_closed(t_data *data);
 int					checkwalls(t_data *data);
 int					checkcardinal(t_gfx *gfx, int fd);
-void				text_init(t_data *data);
 void				free_array(char **array);
 int					valid_map(t_data *data);
 int					on_window_close(t_data *data);
@@ -162,7 +160,6 @@ void				rot_cam(t_data *data, double rot_speed);
 int					mouse_mov(int x, int y, t_data *data);
 void				movements(int keycode, t_data *data);
 void				text_init(t_data *data);
-void				free_textures(int i, t_data *data);
 int					get_texture_color(t_data *data, int tex_num, int tex_x,
 						int tex_y);
 void				calculate_texture_coords(t_data *data, int *tex_x,
@@ -170,6 +167,9 @@ void				calculate_texture_coords(t_data *data, int *tex_x,
 int					get_wall_texture_num(t_data *data);
 int					key_release(int keycode, t_data *data);
 char				**check_rgb(char *split);
-
+int					process_cardinal(char **split, t_gfx *gfx,
+						int *found_count);
+void				set_init_direction(t_data *data, char dir);
+void				dda(t_data *data);
 // # endif
 #endif

@@ -21,7 +21,7 @@ SRC_FILES	= main \
 	camera_rot movements\
 	get_next_line get_next_line_utils\
     utils  exits\
-	ray-casting\
+	ray_casting\
 
 OBJ_DIR = obj
 OBJ	= $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(SRC_FILES)))

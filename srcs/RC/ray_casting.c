@@ -1,37 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray-casting.c                                      :+:      :+:    :+:   */
+/*   ray_casting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 01:29:51 by luctan            #+#    #+#             */
-/*   Updated: 2025/06/23 17:40:35 by luctan           ###   ########.fr       */
+/*   Updated: 2025/07/08 18:13:16 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-void	init_raycasting(t_data *data)
-{
-	data->ray.hit = 0;
-	data->ray.map_x = (int)data->p1.pos_x;
-	data->ray.map_y = (int)data->p1.pos_y;
-	data->ray.perp_wall_dist = 0;
-	data->ray.camera_x = 0;
-	data->ray.dir_x = 0;
-	data->ray.dir_y = 0;
-	data->ray.delta_dist_x = 0;
-	data->ray.delta_dist_y = 0;
-	data->ray.side_dist_x = 0;
-	data->ray.side_dist_y = 0;
-	data->ray.step_x = 0;
-	data->ray.step_y = 0;
-	data->ray.side = 0;
-	data->ray.line_height = 0;
-	data->ray.draw_start = 0;
-	data->ray.draw_end = 0;
-}
 
 void	ray_steps(t_data *data)
 {
@@ -40,23 +19,23 @@ void	ray_steps(t_data *data)
 	ray = &data->ray;
 	if (ray->dir_x < 0)
 	{
-		ray->step_x = -1; // a gauche
+		ray->step_x = -1;
 		ray->side_dist_x = (data->p1.pos_x - ray->map_x) * ray->delta_dist_x;
 	}
 	else
 	{
-		ray->step_x = 1; // a droite
+		ray->step_x = 1;
 		ray->side_dist_x = (ray->map_x + 1.0 - data->p1.pos_x)
 			* ray->delta_dist_x;
 	}
 	if (ray->dir_y < 0)
 	{
-		ray->step_y = -1; // en haut
+		ray->step_y = -1;
 		ray->side_dist_y = (data->p1.pos_y - ray->map_y) * ray->delta_dist_y;
 	}
 	else
 	{
-		ray->step_y = 1; // en bas
+		ray->step_y = 1;
 		ray->side_dist_y = (ray->map_y + 1.0 - data->p1.pos_y)
 			* ray->delta_dist_y;
 	}
@@ -73,31 +52,6 @@ void	init_ray(t_data *data, int x)
 	ray->dir_y = data->p1.dir_y + data->p1.plane_y * ray->camera_x;
 	ray->delta_dist_x = fabs(1 / ray->dir_x);
 	ray->delta_dist_y = fabs(1 / ray->dir_y);
-}
-
-void	DDA(t_data *data)
-{
-	t_ray	*ray;
-
-	ray = &data->ray;
-	ray->hit = 0;
-	while (ray->hit == 0)
-	{
-		if (ray->side_dist_x < ray->side_dist_y)
-		{
-			ray->side_dist_x += ray->delta_dist_x;
-			ray->map_x += ray->step_x;
-			ray->side = 0;
-		}
-		else
-		{
-			ray->side_dist_y += ray->delta_dist_y;
-			ray->map_y += ray->step_y;
-			ray->side = 1;
-		}
-		if (data->map[ray->map_y][ray->map_x] == '1')
-			ray->hit = 1;
-	}
 }
 
 void	wall_distance(t_data *data)
@@ -120,31 +74,6 @@ void	wall_distance(t_data *data)
 		ray->draw_end = HEIGHT - 1;
 }
 
-void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
-{
-    char	*dst = img->addr + (y * img->line_length + x * (img->bpp / 8));
-    *(unsigned int*)dst = color;
-}
-
-void	draw_walls(t_data *data, int x)
-{
-	int	y;
-    int	tex_x;
-    int	tex_y;
-    int	tex_num;
-    int	color;
-
-    tex_num = get_wall_texture_num(data);
-    y = data->ray.draw_start;
-    while (y < data->ray.draw_end)
-    {
-        calculate_texture_coords(data, &tex_x, &tex_y, y);
-        color = get_texture_color(data, tex_num, tex_x, tex_y);
-        my_mlx_pixel_put(&data->frame, x, y, color);
-        y++;
-    }
-}
-
 void	raycast(t_data *data)
 {
 	int	x;
@@ -154,7 +83,7 @@ void	raycast(t_data *data)
 	{
 		init_ray(data, x);
 		ray_steps(data);
-		DDA(data);
+		dda(data);
 		wall_distance(data);
 		draw_walls(data, x);
 		x++;

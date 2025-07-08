@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 18:10:51 by luctan            #+#    #+#             */
-/*   Updated: 2025/07/02 02:55:20 by luctan           ###   ########.fr       */
+/*   Updated: 2025/07/08 17:41:37 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	init_data(t_data *data)
 
 int	main(int ac, char **av, char *env[])
 {
-	t_data data;
+	t_data	data;
 
 	if (!env || !*env)
 		return (1);

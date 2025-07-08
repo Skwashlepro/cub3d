@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 19:48:20 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/07/07 18:35:04 by lmokhtar         ###   ########.fr       */
+/*   Updated: 2025/07/08 18:02:05 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,68 +26,17 @@ static void	floodfill(t_data *data, int x, int y, char **map)
 	floodfill(data, x, y - 1, map);
 }
 
-// static int	error_map(char *buffer)
-// {
-// 	int	i;
-
-// 	if (buffer[0] == '\n')
-// 		return (1);
-// 	i = 1;
-// 	while (buffer[i] != '\0')
-// 	{
-// 		if (buffer[i] != ' ' && buffer[i] != '\n' && buffer[i - 1] == ' ')
-// 			return (1);
-// 		i++;
-// 	}
-// 	return (0);
-// }
-
 int	check_closed(t_data *data)
 {
-	// int		j;
 	char	**map_copy;
 
 	map_copy = copy_map(data->map);
 	if (!map_copy)
 		return (0);
 	floodfill(data, (int)data->p1.pos_x, (int)data->p1.pos_y, map_copy);
-	// while (map_copy[i])
-	// {
-	// 	j = 0;
-	// 	while (map_copy[i][j])
-	// 	{
-	// 		if (map_copy[i][j] == '0')
-	// 		{
-	// 			return (free_array(map_copy), 0);
-	// 		}
-	// 		j++;
-	// 	}
-	// 	i++;
-	// }
 	free_array(map_copy);
 	return (1);
 }
-
-// int	checkwalls(t_data *data)
-// {
-// 	int	i;
-// 	int	j;
-
-// 	i = ft_strlen(data->map[0]);
-// 	data->map_width = i;
-// 	j = 0;
-// 	while (data->map[j])
-// 	{
-// 		if (j == 0 || j == data->map_width - 1)
-// 		{
-
-// 		}
-// 		// else if(data->map[j][0] != '1' || data->map[j][i - 1] != '1')
-// 		// 	return (printf("Erreur2\n"), 0);
-// 		j++;
-// 	}
-// 	return (1);
-// }
 
 static int	check_surrounding_cells(t_data *data, int i, int j, int row_len)
 {
@@ -127,16 +76,6 @@ int	checkwalls(t_data *data)
 	return (1);
 }
 
-void	map_height(char **map, int *height)
-{
-	int	i;
-
-	i = 0;
-	while (map[i])
-		i++;
-	*height = i;
-}
-
 char	**getmap(t_data *data, int fd, char **map, char *tmp)
 {
 	while (fd)
@@ -152,8 +91,7 @@ char	**getmap(t_data *data, int fd, char **map, char *tmp)
 			data->buffer = ft_strdup2("");
 		tmp = data->buffer;
 		data->buffer = ft_strjoin2(tmp, data->line);
-		// if (error_map(data->line) == 1)
-			free_db(tmp, data->line);
+		free_db(tmp, data->line);
 	}
 	if (data->error == 1)
 		return (free_str(data->buffer), NULL);
@@ -163,4 +101,3 @@ char	**getmap(t_data *data, int fd, char **map, char *tmp)
 	map_height(map, &data->map_height);
 	return (free_str(data->buffer), map);
 }
-
