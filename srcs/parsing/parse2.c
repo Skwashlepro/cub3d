@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 19:03:15 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/07/09 02:24:54 by luctan           ###   ########.fr       */
+/*   Updated: 2025/07/09 02:26:38 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int	check_texture(char **split, char **wall_texture, int *count)
 
 int	process_cardinal(char **split, t_gfx *gfx, int *found_count)
 {
-	if (!split[0] || !split[1])
+	if (!ft_isalnum(split[0][1]) && (!split[0] || !split[1]))
 		return (1);
 	if (!ft_strncmp(split[0], "NO", 3) && check_texture(split,
 			&gfx->wall_path[0], found_count))
