@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse2_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 18:07:45 by luctan            #+#    #+#             */
-/*   Updated: 2025/07/08 20:43:55 by luctan           ###   ########.fr       */
+/*   Updated: 2025/07/09 20:28:43 by lmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,25 @@ void	is_player(t_data *data, int i, int j, int *found_player)
 	set_init_direction(data, data->map[i][j]);
 	data->map[i][j] = '0';
 	*found_player = 1;
+}
+
+int	space_in_map(char *map)
+{
+	int	i;
+
+	i = -1;
+	while (map[++i])
+	{
+		if (map[i] == '1')
+			break ;
+	}
+	while (map[++i])
+	{
+		if (map[i] == '\n')
+			if (map[i + 1] == '\n')
+				while (map[++i] && map[i] == '\n')
+					if (map[i])
+						return (0);
+	}
+	return (1);
 }

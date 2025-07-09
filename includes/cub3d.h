@@ -179,5 +179,5 @@ void				draw_walls(t_data *data, int x);
 int					checkcardinal(t_gfx *gfx, int fd);
 int					is_valid_char(char c);
 int					check_comma(char *str);
-
+int					space_in_map(char *map);
 #endif

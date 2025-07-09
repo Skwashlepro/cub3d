@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 19:48:20 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/07/08 20:18:35 by luctan           ###   ########.fr       */
+/*   Updated: 2025/07/09 20:28:52 by lmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,9 @@ char	**getmap(t_data *data, int fd, char **map, char *tmp)
 	}
 	if (data->error == 1)
 		return (free_str(data->buffer), NULL);
+	if (!space_in_map(data->buffer))
+		return (printf("Error\nmap contains space\n"), free_str(data->buffer),
+			NULL);
 	map = ft_split(data->buffer, '\n');
 	if (!map)
 		return (free_str(data->buffer), NULL);
