@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 19:03:15 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/07/08 21:16:08 by luctan           ###   ########.fr       */
+/*   Updated: 2025/07/09 02:24:54 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	init_map(t_data *data, char *str)
 		return (printf("Error\n Wrong extension\n"), 0);
 	data->fd = open(str, O_RDONLY);
 	if (data->fd == -1)
-		return (printf("Error\nFile not found\n"), 2);
+		return (printf("Error\nFile not found\n"), 0);
 	if (checkcardinal(&data->gfx, data->fd) != 6)
 		return (close(data->fd), printf("Error\n Invalid map parameters\n"), 0);
 	data->map = getmap(data, data->fd, data->map, tmp);
