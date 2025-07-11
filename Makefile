@@ -6,7 +6,7 @@ RESET = \033[0m
 BOLD = \033[1m
 
 
-NAME 		= cub3d
+NAME 		= cub3D
 CC			= cc
 LIBFT		= lib/libft/libft.a
 # CFLAGS		= -Wall -Werror -Wextra
@@ -24,6 +24,7 @@ SRC_FILES	= main \
 	get_next_line get_next_line_utils\
     utils  exits\
 	ray_casting ray_functions\
+	even_more_utils \
 
 OBJ_DIR = obj
 OBJ	= $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(SRC_FILES)))
@@ -74,6 +75,8 @@ push:
 	git commit -m "$$commit_message"; \
 	git push; \
 	echo "$(SEPIA)Data successfully transmitted: '$$commit_message'$(RESET)"
+
+bonus: re
 
 re: fclean all
 
