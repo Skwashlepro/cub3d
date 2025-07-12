@@ -9,7 +9,7 @@ BOLD = \033[1m
 NAME 		= cub3D
 CC			= cc
 LIBFT		= lib/libft/libft.a
-CFLAGS		= -Wall -Werror -Wextra
+CFLAGS		= -Wall -Werror -Wextra -O2
 # CFLAGS		= -Wall -Werror -Wextra -g3
 MLX_PATH = ./lib/mlx_linux
 LIBFT_PATH = ./lib/libft
@@ -35,7 +35,7 @@ $(OBJ_DIR):
 	@mkdir -p $@
 
 $(OBJ_DIR)/%.o: %.c
-	@$(CC) $(CFLAGS) $(INC) -Imlx_linux -O3 -c $< -o $@
+	@$(CC) $(CFLAGS) $(INC) -Imlx_linux -c $< -o $@
 
 $(NAME): $(OBJ)
 	@echo "$(SEPIA)$(BOLD)Assembling YoRHa unit [$(NAME)]...$(RESET)"
