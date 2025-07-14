@@ -6,7 +6,7 @@
 /*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 18:07:45 by luctan            #+#    #+#             */
-/*   Updated: 2025/07/11 19:43:20 by lmokhtar         ###   ########.fr       */
+/*   Updated: 2025/07/09 20:28:43 by lmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,27 +88,20 @@ void	is_player(t_data *data, int i, int j, int *found_player)
 int	space_in_map(char *map)
 {
 	int	i;
-	int	len;
 
-	if (!map)
-		return (0);
-	len = ft_strlen(map);
 	i = -1;
-	while (++i < len && map[i])
+	while (map[++i])
+	{
 		if (map[i] == '1')
 			break ;
-	while (++i < len && map[i])
+	}
+	while (map[++i])
 	{
 		if (map[i] == '\n')
-		{
-			if (i + 1 < len && map[i + 1] == '\n')
-			{
-				while (++i < len && map[i] == '\n')
-					;
-				if (i < len && map[i])
-					return (0);
-			}
-		}
+			if (map[i + 1] == '\n')
+				while (map[++i] && map[i] == '\n')
+					if (map[i])
+						return (0);
 	}
 	return (1);
 }

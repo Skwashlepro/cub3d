@@ -6,7 +6,7 @@
 /*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 19:03:15 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/07/09 02:26:38 by luctan           ###   ########.fr       */
+/*   Updated: 2025/07/14 17:31:51 by luctan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	init_map(t_data *data, char *str)
 	{
 		free_array(data->map);
 		data->map = NULL;
+		close(data->fd);
 		return (printf("Error\n Invalid map\n"), 0);
 	}
 	if (!data->map)

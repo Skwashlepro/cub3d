@@ -24,7 +24,6 @@ SRC_FILES	= main \
 	get_next_line get_next_line_utils\
     utils  exits\
 	ray_casting ray_functions\
-	even_more_utils \
 
 OBJ_DIR = obj
 OBJ	= $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(SRC_FILES)))

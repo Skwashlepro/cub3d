@@ -6,7 +6,7 @@
 /*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 20:31:57 by luctan            #+#    #+#             */
-/*   Updated: 2025/07/11 19:42:30 by lmokhtar         ###   ########.fr       */
+/*   Updated: 2025/07/09 20:20:25 by lmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	valid_map(t_data *data)
 {
 	if (!check_player(data))
 		return (printf("Error\n Invalid player position or character\n"), 0);
-	normalize_map(data);
 	if (!checkwalls(data))
 		return (0);
 	if (!check_closed(data))
@@ -92,7 +91,10 @@ char	**copy_map(char **map)
 	{
 		copy[i] = ft_strdup(map[i]);
 		if (!copy[i])
-			return (free_array(copy), NULL);
+		{
+			free_array(copy);
+			return (NULL);
+		}
 		i++;
 	}
 	copy[i] = NULL;
