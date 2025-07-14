@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luctan <luctan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 19:48:20 by lmokhtar          #+#    #+#             */
-/*   Updated: 2025/07/14 17:32:23 by luctan           ###   ########.fr       */
+/*   Updated: 2025/07/14 17:37:02 by lmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ static int	check_surrounding_cells(t_data *data, int i, int j, int row_len)
 			+ 1][j] == ' ') || (j > 0 && data->map[i][j - 1] == ' ')
 		|| (j < row_len - 1 && data->map[i][j + 1] == ' '))
 		return (printf("Error: Map not closed at [%d][%d]\n", i, j), 0);
-	if (i > 0 && j >= (int)ft_strlen(data->map[i - 1]) && data->map[i][j] == '0')
+	if (i > 0 && j >= (int)ft_strlen(data->map[i - 1])
+		&& data->map[i][j] == '0')
 		return (printf("Error: Map not closed at [%d][%d]\n", i, j), 0);
 	return (1);
 }

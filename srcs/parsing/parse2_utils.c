@@ -6,7 +6,7 @@
 /*   By: lmokhtar <lmokhtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 18:07:45 by luctan            #+#    #+#             */
-/*   Updated: 2025/07/09 20:28:43 by lmokhtar         ###   ########.fr       */
+/*   Updated: 2025/07/14 17:47:45 by lmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,17 +91,19 @@ int	space_in_map(char *map)
 
 	i = -1;
 	while (map[++i])
-	{
 		if (map[i] == '1')
 			break ;
-	}
-	while (map[++i])
+	while (map[i])
 	{
-		if (map[i] == '\n')
-			if (map[i + 1] == '\n')
-				while (map[++i] && map[i] == '\n')
-					if (map[i])
-						return (0);
+		if (map[i] == '\n' && map[i + 1] == '\n')
+		{
+			while (map[++i] && map[i] == '\n')
+				;
+			if (map[i])
+				return (0);
+		}
+		else
+			i++;
 	}
 	return (1);
 }
